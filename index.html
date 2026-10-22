@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoSolar - Tecnociência, Robótica e Energia</title>
+    <title>EcoSolar Dashboard - Tecnociência e Robótica Integrada</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- VLibras Widget -->
+    <!-- Widget de Acessibilidade VLibras -->
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
@@ -15,91 +15,153 @@
         </div>
     </div>
 
+    <!-- Barra de Acessibilidade Superior -->
+    <div class="top-accessibility-bar">
+        <button id="toggle-contrast" class="btn-acc" aria-label="Alternar Alto Contraste">🌓 Alto Contraste</button>
+        <button id="toggle-dyslexia" class="btn-acc" aria-label="Mudar para Fonte Amigável para Dislexia">📖 Fonte Leitura</button>
+    </div>
+
     <header>
         <div class="header-container">
-            <div class="logo" aria-label="EcoSolar Logo">☀️ EcoSolar 💧</div>
-            <div class="acc-controls">
-                <button id="toggle-contrast" class="btn-acc" aria-label="Ativar Alto Contraste">Alto Contraste</button>
-                <button id="toggle-dyslexia" class="btn-acc" aria-label="Mudar para Fonte para Dislexia">Fonte Leitura</button>
-            </div>
-            <nav aria-label="Menu Principal">
+            <div class="logo">☀️ EcoSolar <span>Dashboard</span> 💧</div>
+            <nav aria-label="Navegação Principal">
                 <ul class="nav-links">
-                    <li><a href="#tecnociencia">Tecnociência</a></li>
-                    <li><a href="#robotica">Robótica & Sensores</a></li>
-                    <li><a href="#simulador">Simulador</a></li>
+                    <li><a href="#corponegro">Ondas & Corpo Negro</a></li>
+                    <li><a href="#fotoeletrico">Efeito Fotoelétrico</a></li>
+                    <li><a href="#robotica">Sensores & Robótica</a></li>
+                    <li><a href="#simulador">Painel Interativo</a></li>
                     <li><a href="#mapasite">Mapa do Site</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <!-- Seção Tecnociência -->
-        <section id="tecnociencia" class="card">
-            <h2>1. Tecnociência: Da Radiação ao Efeito Fotoelétrico</h2>
-            <p>O Sol se comporta como um <strong>corpo negro</strong> ideal, emitindo <strong>ondas eletromagnéticas</strong> que viajam pelo espaço. Ao atingirem a célula fotovoltaica, os fótons dessa radiação interagem com os elétrons do semicondutor (silício). Se a frequência da onda for alta o suficiente, ocorre o <strong>efeito fotoelétrico</strong>, liberando elétrons e gerando a corrente que abastecerá nosso sistema.</p>
-            
-            <div class="animacao-container" aria-label="Animação do efeito fotoelétrico">
-                <div class="photon" aria-hidden="true"></div>
-                <div class="electron" aria-hidden="true"></div>
-                <p class="legenda-animacao">Fóton (Onda) atingindo a placa e liberando um Elétron</p>
+    <main class="dashboard-layout">
+        <!-- CARD 1: Radiação de Corpo Negro e Ondas -->
+        <section id="corponegro" class="card bg-orange">
+            <span class="badge-category">Física Moderna</span>
+            <h2>Ondas Eletromagnéticas & Radiação de Corpo Negro</h2>
+            <p>O Sol atua como um <strong>corpo negro</strong> perfeito. Ele emite um espectro contínuo de <strong>ondas eletromagnéticas</strong> dependendo puramente de sua temperatura térmica (~5800 K). Essa energia viaja em pequenos pacotes discretos chamados <strong>fótons</strong>.</p>
+            <div class="visual-spectrum" aria-label="Gráfico representativo do espectro visível">
+                <div class="spectrum-bar"></div>
+                <small class="center-text">Espectro de Radiação Solar Absorvido (UV ao Infravermelho)</small>
             </div>
         </section>
 
-        <!-- Seção Robótica e Sensores -->
-        <section id="robotica" class="card">
-            <h2>2. Robótica: Automação e Monitoramento da Piscina</h2>
-            <p>Para otimizar o aquecimento da piscina, o sistema robótico utiliza sensores estratégicos conectados a um microcontrolador:</p>
-            <ul>
-                <li><strong>Sensor LDR (Fotorresistor):</strong> Mede a intensidade da luz solar para decidir se o sistema fotovoltaico está operando no pico.</li>
-                <li><strong>Sensor de Temperatura (DS18B20):</strong> Monitora a água da piscina e o trocador de calor para acionar as motobombas apenas quando necessário.</li>
-            </ul>
+        <!-- CARD 2: O Efeito Fotoelétrico -->
+        <section id="fotoeletrico" class="card bg-blue">
+            <span class="badge-category">Mecanismo Quântico</span>
+            <h2>Como a Luz vira Eletricidade?</h2>
+            <p>Dentro das células de silício dopado, ocorre o milagre da conversão física. Quando a frequência da onda incidente supera a *função trabalho* do material, os elétrons saltam da banda de valência para a banda de condução, criando corrente contínua.</p>
+            
+            <div class="animacao-quantum" aria-label="Animação representativa do Efeito Fotoelétrico">
+                <div class="photon-wave">⚡ Fóton</div>
+                <div class="silicon-atom">⚛️ Silício</div>
+                <div class="electron-jump">⚫ Elétron Livre</div>
+            </div>
         </section>
 
-        <!-- Seção Simulador Interativo Integrado -->
-        <section id="simulador" class="card">
-            <h2>3. Simulador Interativo de Eficiência</h2>
-            <p>Simule a leitura dos sensores de robótica e veja o impacto na conversão de energia física da piscina.</p>
-            
-            <div class="simulador-grid">
-                <div class="controles">
-                    <label for="sensor-ldr">Leitura do Sensor LDR (Radiação Solar - W/m²): <span id="val-ldr">600</span></label>
-                    <input type="range" id="sensor-ldr" min="0" max="1000" value="600" step="50">
+        <!-- CARD 3: Comparativo de Eficiência Climática -->
+        <section class="card bg-purple full-width">
+            <span class="badge-category">Análise Comparativa</span>
+            <h2>Desempenho Energético: Sol Direto vs. Dia Nublado</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Condição Climática</th>
+                            <th>Tipo de Radiação predominante</th>
+                            <th>Eficiência Média das Placas</th>
+                            <th>Impacto no Aquecimento da Piscina</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Ensolarado (Pico)</strong></td>
+                            <td>Radiação Direta (Fótons de alta energia)</td>
+                            <td>18% a 22%</td>
+                            <td>Máximo rendimento. Bomba opera em potência total.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nublado / Céu Encoberto</strong></td>
+                            <td>Radiação Difusa (Espalhada pelas nuvens)</td>
+                            <td>3% a 7%</td>
+                            <td>Geração reduzida. Sistema entra em modo econômico ou standby.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
-                    <label for="temp-agua">Sensor de Temperatura da Piscina (°C): <span id="val-temp">22</span></label>
-                    <input type="range" id="temp-agua" min="10" max="40" value="22" step="1">
+        <!-- CARD 4: Robótica e Automação de Sensores -->
+        <section id="robotica" class="card bg-teal">
+            <span class="badge-category">Automação Arduino/ESP32</span>
+            <h2>Arquitetura de Sensores da Robótica</h2>
+            <p>O cérebro mecânico da nossa piscina automatizada analisa as variáveis ambientais em tempo real por meio de hardware dedicado:</p>
+            <div class="sensor-list">
+                <div class="sensor-item">🟢 <strong>Sensor LDR:</strong> Monitora a luminosidade ambiente para calcular a incidência de nuvens.</div>
+                <div class="sensor-item">🔵 <strong>Sensor DS18B20:</strong> Sonda térmica blindada inserida diretamente nos canos d'água da piscina.</div>
+            </div>
+        </section>
+
+        <!-- CARD 5: Painel Interativo de Simulação -->
+        <section id="simulador" class="card bg-yellow full-width">
+            <span class="badge-category">Simulador Interativo</span>
+            <h2>Painel de Monitoramento Computacional</h2>
+            <p>Modifique os controles deslizantes para emular o comportamento dos sensores de robótica e ver a resposta da física quântica no trocador de calor.</p>
+            
+            <div class="simulator-grid">
+                <div class="controls-panel">
+                    <div class="input-group">
+                        <label for="slide-ldr">Intensidade da Radiação Solar (LDR): <strong id="txt-ldr">700</strong> W/m²</label>
+                        <input type="range" id="slide-ldr" min="0" max="1000" value="700" step="50">
+                    </div>
+                    <div class="input-group">
+                        <label for="slide-temp">Temperatura Atual da Água: <strong id="txt-temp">24</strong> °C</label>
+                        <input type="range" id="slide-temp" min="12" max="38" value="24" step="1">
+                    </div>
                 </div>
-                
-                <div class="resultados">
-                    <h3>Dados do Sistema Automatizado:</h3>
-                    <p>Potência Estimada: <strong id="res-potencia">120</strong> W/m²</p>
-                    <p>Status do Sistema: <span id="res-status" class="badge">Aguardando</span></p>
-                    <div class="libras-video-box">
-                        <p>[Espaço Reservado para Vídeo Informativo em Libras]</p>
+
+                <div class="display-panel">
+                    <div class="metric-card">
+                        <h3>Potência Gerada</h3>
+                        <p><span id="out-potencia">140</span> W/m²</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Estado da Motobomba</h3>
+                        <span id="out-status" class="status-indicator">Ativo</span>
                     </div>
                 </div>
             </div>
+
+            <div class="libras-accessible-placeholder">
+                <p>🤟 <strong>Acessibilidade em Libras:</strong> Assista ao vídeo explicativo sobre o funcionamento deste simulador com tradução em Libras clicando no botão flutuante à direita.</p>
+            </div>
         </section>
 
-        <!-- Mapa do Site (Critério de Estrutura) -->
-        <section id="mapasite" class="card">
-            <h2>4. Mapa do Site</h2>
-            <nav aria-label="Mapa do site">
-                <ul class="mapa-links">
-                    <li><a href="#tecnociencia">Início / Tecnociência (Teoria Física)</a></li>
-                    <li><a href="#robotica">Robótica (Sensores e Automação)</a></li>
-                    <li><a href="#simulador">Simulador Interativo (Prática)</a></li>
-                </ul>
-            </nav>
+        <!-- MAPA DO SITE -->
+        <section id="mapasite" class="card bg-dark full-width">
+            <h2>Mapa do Site - Navegação Estruturada</h2>
+            <ul class="site-map-tree">
+                <li>🏠 <a href="#">Página Principal (Dashboard)</a>
+                    <ul>
+                        <li>📉 <a href="#corponegro">Fundamentos: Corpo Negro e Ondas</a></li>
+                        <li>⚛️ <a href="#fotoeletrico">Conversão: Efeito Fotoelétrico</a></li>
+                        <li>🤖 <a href="#robotica">Hardware: Robótica e Sensores Integrados</a></li>
+                        <li>🎛️ <a href="#simulador">Interação: Painel de Controle e Simulação</a></li>
+                    </ul>
+                </li>
+            </ul>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 EcoSolar. Tecnologia inclusiva, mobile-first e sustentável.</p>
+        <p>© 2026 EcoSolar Hub. Desenvolvido com foco em Educação Tecnológica, Sustentabilidade e Inclusão Universal.</p>
     </footer>
 
     <script src="https://vlibras.gov.br"></script>
     <script src="script.js"></script>
 </body>
 </html>
+
 
