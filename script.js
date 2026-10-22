@@ -1,58 +1,63 @@
-// Inicialização do Recurso VLibras Governamental
+// Ativação e tratamento da API de Inclusão VLibras
 if (window.VLibras) {
     new window.VLibras.Widget('https://vlibras.gov.br');
 }
 
-// Elementos de Acessibilidade
-const btnContrast = document.getElementById('toggle-contrast');
-const btnDyslexia = document.getElementById('toggle-dyslexia');
+// Manipulação dos Modos de Leitura e Acessibilidade Visual
+const contrastBtn = document.getElementById('toggle-contrast');
+const dyslexiaBtn = document.getElementById('toggle-dyslexia');
 
-btnContrast.addEventListener('click', () => {
+contrastBtn.addEventListener('click', () => {
     document.body.classList.toggle('high-contrast');
 });
 
-btnDyslexia.addEventListener('click', () => {
+dyslexiaBtn.addEventListener('click', () => {
     document.body.classList.toggle('font-dyslexia');
 });
 
-// Elementos e Lógica do Simulador Fotovoltaico & Robótico
-const ldrSlider = document.getElementById('sensor-ldr');
-const tempSlider = document.getElementById('temp-agua');
-const valLdr = document.getElementById('val-ldr');
-const valTemp = document.getElementById('val-temp');
-const resPotencia = document.getElementById('res-potencia');
-const resStatus = document.getElementById('res-status');
+// Captura de Elementos de Interface do Simulador Automatizado
+const sliderLdr = document.getElementById('slide-ldr');
+const sliderTemp = document.getElementById('slide-temp');
 
-function rodarSimulacao() {
-    const ldrValor = parseFloat(ldrSlider.value);
-    const tempValor = parseFloat(tempSlider.value);
+const txtLdr = document.getElementById('txt-ldr');
+const txtTemp = document.getElementById('txt-temp');
 
-    valLdr.textContent = ldrValor;
-    valTemp.textContent = tempValor;
+const outPotencia = document.getElementById('out-potencia');
+const outStatus = document.getElementById('out-status');
 
-    // Cálculo simplificado: potência depende da radiação captada pelo LDR (Eficiência de 20%)
-    const potencia = ldrValor * 0.20;
-    resPotencia.textContent = potencia.toFixed(1);
+// Execução de Regras Matemáticas e Automação de Hardware (Sensores)
+function recalcularDashboard() {
+    const ldrValue = parseInt(sliderLdr.value, 10);
+    const tempValue = parseInt(sliderTemp.value, 10);
 
-    // Regra de automação robótica para o aquecimento da piscina
-    if (ldrValor > 400 && tempValor < 28) {
-        resStatus.textContent = "Bomba de calor LIGADA (Sol forte e água fria)";
-        resStatus.style.backgroundColor = "#4caf50";
-        resStatus.style.color = "#fff";
-    } else if (tempValor >= 28) {
-        resStatus.textContent = "Sistema DESLIGADO (Temperatura ideal atingida)";
-        resStatus.style.backgroundColor = "#2196f3";
-        resStatus.style.color = "#fff";
+    // Atualização de rótulos de texto reativos
+    txtLdr.textContent = ldrValue;
+    txtTemp.textContent = tempValue;
+
+    // Cálculo físico da potência com rendimento quântico estático de 20%
+    const calculoPotencia = ldrValue * 0.20;
+    outPotencia.textContent = calculoPotencia.toFixed(0);
+
+    // Sistema Robótico de controle lógico do trocador de calor da piscina
+    if (ldrValue > 450 && tempValue < 29) {
+        outStatus.textContent = "BOMBA LIGADA";
+        outStatus.style.backgroundColor = "#00a896"; // Teal vivo
+        outStatus.style.color = "#fff";
+    } else if (tempValue >= 29) {
+        outStatus.textContent = "TEMPERATURA IDEAL";
+        outStatus.style.backgroundColor = "#2563eb"; // Azul água
+        outStatus.style.color = "#fff";
     } else {
-        resStatus.textContent = "Sistema em ESPERA (Radiação solar insuficiente)";
-        resStatus.style.backgroundColor = "#ff9800";
-        resStatus.style.color = "#000";
+        outStatus.textContent = "MODO STANDBY (NUVENS)";
+        outStatus.style.backgroundColor = "#ff6b35"; // Laranja de alerta
+        outStatus.style.color = "#fff";
     }
 }
 
-ldrSlider.addEventListener('input', rodarSimulacao);
-tempSlider.addEventListener('input', rodarSimulacao);
+// Escuta de mudanças nos controles dinâmicos
+sliderLdr.addEventListener('input', recalcularDashboard);
+sliderTemp.addEventListener('input', recalcularDashboard);
 
-// Inicializa os dados na primeira execução
-rodarSimulacao();
+// Execução imediata no carregamento da DOM
+recalcularDashboard();
 
