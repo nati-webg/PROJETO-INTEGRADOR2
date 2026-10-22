@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSolar - Energia Fotovoltaica e Aquecimento</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- VLibras Widget Integrado -->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">☀️ EcoSolar 💧</div>
+            <button id="toggle-accessibility" class="btn-acc" aria-label="Ativar Alto Contraste">Contraste</button>
+            <button id="toggle-dyslexia" class="btn-acc" aria-label="Mudar Fonte para Dislexia">Fonte Leitura</button>
+            <nav aria-label="Menu Principal">
+                <ul class="nav-links">
+                    <li><a href="#funcionamento">Ciência e Física</a></li>
+                    <li><a href="#simulador">Simulador</a></li>
+                    <li><a href="#variacao">Clima & Produção</a></li>
+                    <li><a href="#piscina">Aplicação Piscina</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Seção Ciência e Física -->
+        <section id="funcionamento" class="card">
+            <h2>Física Moderna: O Efeito Fotoelétrico</h2>
+            <p>As <strong>placas fotovoltaicas</strong> são formadas por células de silício dopado (tipo P e tipo N), criando uma junção semicondutora. Quando os <strong>fótons</strong> da luz solar colidem com os elétrons do silício, eles transferem energia. Se essa energia for maior que a função trabalho do material, os elétrons são liberados, gerando uma corrente elétrica contínua.</p>
+            <div class="animacao-container" aria-label="Representação visual do efeito fotoelétrico">
+                <div class="photon"></div>
+                <div class="electron"></div>
+                <p class="legenda-animacao">Fóton atinge o semicondutor &rarr; Elétron é liberado.</p>
+            </div>
+        </section>
+
+        <!-- Seção Simulador Interativo -->
+        <section id="simulador" class="card">
+            <h2>Simulador de Potência e Eficiência</h2>
+            <p>Ajuste os parâmetros para analisar a relação entre a intensidade da radiação e a potência gerada.</p>
+            <div class="simulador-grid">
+                <div class="controles">
+                    <label for="radisolar">Intensidade da Radiação (W/m²): <span id="val-rad">500</span></label>
+                    <input type="range" id="radisolar" min="100" max="1000" value="500" step="50">
+
+                    <label for="eficiencia">Eficiência do Painel (%): <span id="val-efi">20</span></label>
+                    <input type="range" id="eficiencia" min="10" max="25" value="20" step="1">
+                </div>
+                <div class="resultados">
+                    <h3>Resultados Estimados:</h3>
+                    <p>Potência por m²: <strong id="res-potencia">100</strong> W/m²</p>
+                    <p>Status de Produção: <span id="res-status" class="badge">Moderada</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Variação Climática -->
+        <section id="variacao" class="card">
+            <h2>Produção ao Longo do Dia e Clima</h2>
+            <p>A geração elétrica acompanha uma curva senoidal ao longo do dia, atingindo o pico ao meio-dia solar. Em <strong>dias nublados</strong>, as nuvens barram a radiação direta, mas as placas continuam operando através da radiação difusa, operando com cerca de 10% a 30% da sua capacidade máxima.</p>
+        </section>
+
+        <!-- Seção Aplicação na Piscina e Impacto Social -->
+        <section id="piscina" class="card">
+            <h2>Aquecimento Sustentável de Piscinas</h2>
+            <p>A eletricidade gerada alimenta uma bomba de calor (trocador de calor) de alta eficiência. Essa automação reduz drasticamente as emissões de carbono em comparação a aquecedores a gás, promovendo sustentabilidade e conscientização ambiental na comunidade.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 EcoSolar - Projeto Tecnológico Inclusivo e Sustentável.</p>
+    </footer>
+
+    <script src="https://vlibras.gov.br"></script>
+    <script src="script.js"></script>
+</body>
+</html>
 
