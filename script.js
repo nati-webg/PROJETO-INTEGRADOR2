@@ -1,8 +1,3 @@
-// Ativação e tratamento da API de Inclusão VLibras
-if (window.VLibras) {
-    new window.VLibras.Widget('https://vlibras.gov.br');
-}
-
 // Manipulação dos Modos de Leitura e Acessibilidade Visual
 const contrastBtn = document.getElementById('toggle-contrast');
 const dyslexiaBtn = document.getElementById('toggle-dyslexia');
@@ -38,19 +33,19 @@ function recalcularDashboard() {
     const calculoPotencia = ldrValue * 0.20;
     outPotencia.textContent = calculoPotencia.toFixed(0);
 
+    // Limpa classes anteriores para não conflitar com o Alto Contraste do CSS
+    outStatus.className = 'status-indicator';
+
     // Sistema Robótico de controle lógico do trocador de calor da piscina
     if (ldrValue > 450 && tempValue < 29) {
         outStatus.textContent = "BOMBA LIGADA";
-        outStatus.style.backgroundColor = "#00a896"; // Teal vivo
-        outStatus.style.color = "#fff";
+        outStatus.classList.add('status-active');
     } else if (tempValue >= 29) {
         outStatus.textContent = "TEMPERATURA IDEAL";
-        outStatus.style.backgroundColor = "#2563eb"; // Azul água
-        outStatus.style.color = "#fff";
+        outStatus.classList.add('status-ideal');
     } else {
         outStatus.textContent = "MODO STANDBY (NUVENS)";
-        outStatus.style.backgroundColor = "#ff6b35"; // Laranja de alerta
-        outStatus.style.color = "#fff";
+        outStatus.classList.add('status-standby');
     }
 }
 
@@ -60,4 +55,3 @@ sliderTemp.addEventListener('input', recalcularDashboard);
 
 // Execução imediata no carregamento da DOM
 recalcularDashboard();
-
