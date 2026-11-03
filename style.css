@@ -1,16 +1,21 @@
-/* Configuração de Cores Dashboard Padrão */
+
+### 2. `style.css` (Unificado e Sem Erros)
+```css
+/* Definição do Escopo de Estilos Modernos - Estilo Dashboard Avançado */
 :root {
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --body-bg: #111827;
-    --card-default: #1f2937;
-    --text-white: #ffffff;
+    --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --body-bg: #0f172a;
+    --card-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
     
-    /* Cores Temáticas Dashboard */
-    --clr-orange: #ff6b35;
-    --clr-blue: #004e98;
-    --clr-purple: #6f2dbd;
-    --clr-teal: #00a896;
-    --clr-dark: #111c24;
+    /* Degradês de Cores */
+    --grad-orange: linear-gradient(135deg, #f97316, #ea580c);
+    --grad-blue: linear-gradient(135deg, #2563eb, #1d4ed8);
+    --grad-purple: linear-gradient(135deg, #7c3aed, #6d28d9);
+    --grad-teal: linear-gradient(135deg, #0d9488, #0f766e);
+    --grad-yellow: linear-gradient(135deg, #eab308, #ca8a04);
+    --grad-dark: linear-gradient(135deg, #334155, #1e293b);
 }
 
 * {
@@ -21,13 +26,14 @@
 
 body {
     background-color: var(--body-bg);
-    color: var(--text-white);
+    color: var(--text-main);
     font-family: var(--font-family);
-    padding-bottom: 20px;
+    line-height: 1.5;
+    padding-bottom: 40px;
 }
 
 /* ==========================================================================
-   [CHECKLIST - TESTE ALTO CONTRASTE] Força fundo preto e texto amarelo/branco em tudo
+   [CHECKLIST - ALTO CONTRASTE ESTRETO] Inverte 100% dos painéis, tabelas e inputs
    ========================================================================== */
 body.high-contrast {
     background-color: #000000 !important;
@@ -42,249 +48,338 @@ body.high-contrast * {
     box-shadow: none !important;
 }
 
-body.high-contrast strong, 
-body.high-contrast span, 
-body.high-contrast a, 
-body.high-contrast h2, 
+body.high-contrast strong,
+body.high-contrast span,
+body.high-contrast a,
+body.high-contrast h2,
 body.high-contrast h3,
+body.high-contrast h4,
 body.high-contrast #out-potencia,
 body.high-contrast #txt-ldr,
-body.high-contrast #txt-temp {
-    color: #ffff00 !important; /* Destaques ganham cor amarela */
+body.high-contrast #txt-temp,
+body.high-contrast .big-metric {
+    color: #ffff00 !important;
 }
 
-body.high-contrast .card,
+body.high-contrast .card-main,
+body.high-contrast .card-header,
 body.high-contrast table,
 body.high-contrast th,
 body.high-contrast td,
 body.high-contrast .controls-panel,
-body.high-contrast .metric-card,
-body.high-contrast .sensor-item,
+body.high-contrast .output-card,
+body.high-contrast .sensor-box,
+body.high-contrast .step-num,
+body.high-contrast .video-mock-player,
+body.high-contrast .control-block,
 body.high-contrast input[type="range"] {
     border: 2px solid #ffffff !important;
+    border-radius: 0px !important;
 }
 
 /* ==========================================================================
-   [CHECKLIST - TESTE FONTE DE LEITURA] Altera tipografia para formato inclusivo
+   [CHECKLIST - FONTE LEITURA] Modificação visual imediata
    ========================================================================== */
 body.font-dyslexia * {
     font-family: 'Verdana', 'Comic Sans MS', sans-serif !important;
     font-size: 1.1rem !important;
     letter-spacing: 0.06em !important;
-    word-spacing: 0.1em !important;
-    line-height: 1.7 !important;
+    word-spacing: 0.12em !important;
+    line-height: 1.8 !important;
 }
-
-body.font-dyslexia h2, 
-body.font-dyslexia .logo { 
-    font-size: 1.7rem !important; 
-}
+body.font-dyslexia h2, body.font-dyslexia .logo { font-size: 1.6rem !important; }
 
 /* ==========================================================================
-   [CHECKLIST - NAVEGAÇÃO POR TECLADO] Destaque visual nítido ao usar o TAB
+   [CHECKLIST - NAVEGAÇÃO POR TECLADO] Outline colorido nítido
    ========================================================================== */
 *:focus-visible {
-    outline: 4px solid #06b6d4 !important;
+    outline: 4px solid #38bdf8 !important;
     outline-offset: 4px !important;
-    box-shadow: 0 0 14px #06b6d4 !important;
+    box-shadow: 0 0 16px #38bdf8 !important;
 }
 
 /* Barra de Acessibilidade */
 .top-accessibility-bar {
-    background-color: #0f172a;
-    padding: 10px;
+    background-color: #020617;
+    padding: 10px 20px;
     display: flex;
     justify-content: flex-end;
     gap: 12px;
 }
-
 .btn-acc {
-    background-color: #334155;
-    color: white;
-    border: none;
+    background-color: #1e293b;
+    color: #f8fafc;
+    border: 1px solid #334155;
     padding: 8px 16px;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 0.85rem;
-    font-weight: bold;
+    font-weight: 700;
 }
+.btn-acc:hover { background-color: #334155; }
 
-/* Header */
+/* Header & Menu */
 header {
-    background: linear-gradient(135deg, #1e3a8a, #0d9488);
-    padding: 1.5rem 1rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    background-color: #1e293b;
+    border-bottom: 1px solid #334155;
+    padding: 1.2rem 2rem;
 }
-
 .header-container {
-    max-width: 1300px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
 }
-
-@media(min-width: 768px) {
-    .header-container {
-        flex-direction: row;
-        justify-content: space-between;
-    }
+@media(min-width: 992px) {
+    .header-container { flex-direction: row; justify-content: space-between; }
 }
-
-.logo {
-    font-size: 1.8rem;
-    font-weight: 800;
-}
-.logo span { color: #f9c74f; }
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
+.logo { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.025em; }
+.logo span { color: #f59e0b; }
+.nav-links { list-style: none; display: flex; flex-wrap: wrap; gap: 12px; }
 .nav-links a {
-    color: white;
+    color: var(--text-muted);
     text-decoration: none;
     font-weight: 600;
-    padding: 6px 12px;
-    background-color: rgba(255,255,255,0.1);
-    border-radius: 4px;
+    font-size: 0.95rem;
+    padding: 8px 14px;
+    border-radius: 6px;
+    background-color: #0f172a;
+    transition: all 0.2s;
+}
+.nav-links a:hover { color: #fff; background-color: #3b82f6; }
+
+/* Estrutura de Distribuição de Grid Estilo Dashboard */
+.dashboard-layout {
+    max-width: 1400px;
+    margin: 2.5rem auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+@media(min-width: 992px) {
+    .dashboard-layout { grid-template-columns: 1fr 1fr; }
+    .full-width { grid-column: span 2; }
 }
 
-/* Dashboard Grid */
-.dashboard-layout {
-    max-width: 1300px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+/* Cartões Tipo Main */
+.card-main {
+    background-color: var(--card-bg);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    border: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+}
+.card-header { padding: 1.2rem 1.5rem; color: #fff; }
+.bg-gradient-orange { background: var(--grad-orange); }
+.bg-gradient-blue { background: var(--grad-blue); }
+.bg-gradient-purple { background: var(--grad-purple); }
+.bg-gradient-teal { background: var(--grad-teal); }
+.bg-gradient-yellow { background: var(--grad-yellow); color: #0f172a !important; }
+.bg-gradient-dark { background: var(--grad-dark); }
+
+.bg-gradient-yellow h2 { color: #0f172a; }
+
+.badge {
+    display: inline-block;
+    background-color: rgba(0,0,0,0.25);
+    padding: 4px 10px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+.card-body { padding: 1.8rem; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+
+/* Distribuição Textual e Alinhamentos */
+p { color: var(--text-main); margin-bottom: 15px; font-size: 1.05rem; }
+.split-grid-2 {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
 }
-
 @media(min-width: 768px) {
-    .dashboard-layout {
-        grid-template-columns: 1fr 1fr;
-    }
-    .full-width {
-        grid-column: span 2;
-    }
+    .split-grid-2 { grid-template-columns: 1fr 1fr; }
 }
 
-.card {
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    border-top: 6px solid rgba(255,255,255,0.3);
-}
-
-.bg-orange { background-color: var(--clr-orange); }
-.bg-blue { background-color: var(--clr-blue); }
-.bg-purple { background-color: var(--clr-purple); }
-.bg-teal { background-color: var(--clr-teal); }
-.bg-yellow { background-color: #e5ba13; color: #111; }
-.bg-dark { background-color: var(--clr-dark); border: 1px solid #334155;}
-
-.badge-category {
-    display: inline-block;
-    background-color: rgba(0,0,0,0.3);
-    color: white;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-h2 { margin-bottom: 15px; font-size: 1.6rem; }
-p { margin-bottom: 15px; line-height: 1.6; }
-
-/* Espectro Gráfico */
-.visual-spectrum { margin-top: 15px; }
+/* Gráfico de Espectro */
 .spectrum-bar {
-    height: 20px;
-    background: linear-gradient(90deg, violet, blue, green, yellow, orange, red);
-    border-radius: 4px;
-    margin-bottom: 5px;
-}
-
-/* Tabelas */
-.table-responsive { overflow-x: auto; }
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    background-color: rgba(0,0,0,0.2);
-}
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-}
-th { background-color: rgba(0,0,0,0.4); color: white; }
-
-/* Sensores */
-.sensor-list { display: flex; flex-direction: column; gap: 10px; }
-.sensor-item { background: rgba(0,0,0,0.2); padding: 12px; border-radius: 6px; }
-
-/* Estrutura do Simulador */
-.simulador-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    margin-top: 15px;
-}
-.controls-panel {
-    background: rgba(255,255,255,0.1);
-    padding: 15px;
-    border-radius: 8px;
-}
-.input-group { margin-bottom: 15px; }
-.input-group input { width: 100%; margin-top: 8px; cursor: pointer; }
-
-.display-panel { display: flex; gap: 15px; }
-.metric-card {
-    background: #111c24;
-    color: white;
-    padding: 20px;
-    border-radius: 8px;
-    flex: 1;
-    text-align: center;
-}
-.metric-card p { font-size: 2rem; font-weight: bold; margin: 5px 0 0; color: #00ffff;}
-
-/* Classes Dinâmicas de Estado */
-.status-indicator {
-    display: inline-block;
+    height: 18px;
+    background: linear-gradient(90deg, #7c3aed, #2563eb, #10b981, #f59e0b, #ef4444);
+    border-radius: 30px;
     margin-top: 10px;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-weight: bold;
-    color: white;
 }
-.status-active { background-color: #00a896; }
-.status-ideal { background-color: #2563eb; }
-.status-standby { background-color: #ff6b35; }
+.spectrum-labels { display: flex; justify-content: space-between; margin-top: 6px; color: var(--text-muted); font-size: 0.8rem; }
 
-.libras-accessible-placeholder {
-    background-color: rgba(0,0,0,0.05);
-    border-left: 4px solid #000;
-    padding: 12px;
-    margin-top: 20px;
+/* Passos Lógicos em Tópicos */
+.step-container { display: flex; flex-direction: column; gap: 12px; }
+.step-item { display: flex; gap: 15px; align-items: flex-start; background: #0f172a; padding: 12px; border-radius: 8px; }
+.step-num {
+    background: #3b82f6;
+    color: #fff;
+    font-weight: 800;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
-/* Árvore do Mapa do Site */
-.site-map-tree ul { margin-left: 20px; padding-top: 5px; }
-.site-map-tree li { margin: 6px 0; }
-.site-map-tree a { color: #58a6ff; text-decoration: none; font-weight: bold; }
-.site-map-tree a:hover { text-decoration: underline; }
+/* Listas Limpas */
+.bullet-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.bullet-list li { background: #0f172a; padding: 12px; border-radius: 8px; border-left: 4px solid #8b5cf6; }
 
-footer {
-    text-align: center;
-    padding: 2rem 1rem;
-    background-color: #030712;
-    margin-top: 3rem;
-    font-size: 0.9rem;
+/* Tabelas Customizadas */
+.table-responsive { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background-color: #0f172a; border-radius: 8px; overflow: hidden; }
+th, td { padding: 14px; text-align: left; font-size: 0.95rem; border-bottom: 1px solid #334155; }
+th { background-color: rgba(0,0,0,0.3); color: #fff; font-weight: 700; }
+
+/* Mini Grid de Sensores */
+.mini-grid-sensors { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 15px; }
+@media(min-width: 576px) { .mini-grid-sensors { grid-template-columns: 1fr 1fr; } }
+.sensor-box { background: #0f172a; padding: 14px; border-radius: 8px; display: flex; gap: 12px; align-items: center; }
+.sensor-box h4 { font-size: 1rem; color: #fff; margin-bottom: 2px; }
+.sensor-box p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+.sensor-icon { font-size: 1.5rem; }
+.actuator-box { background: rgba(13, 148, 136, 0.15); border-left: 4px solid #0d9488; padding: 14px; border-radius: 8px; font-size: 0.95rem; }
+
+/* Caixa de Player do Vídeo */
+.video-container-box { display: flex; flex-direction: column; gap: 12px; }
+.video-mock-player {
+    background-color: #020617;
+    height: 180px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #475569;
+    position: relative;
+    cursor: pointer;
+}
+.video-overlay { text-align: center; display: flex; flex-direction: column; gap: 6px; }
+.video-overlay span { font-weight: bold; color: #3b82f6; font-size: 1.1rem; }
+.video-overlay small { color: var(--text-muted); }
+.video-caption { font-size: 0.85rem; color: var(--text-muted); text-align: center; }
+
+/* Layout Distribuído do Simulador */
+.dynamic-simulator-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+@media(min-width: 768px) {
+    .dynamic-simulator-layout { grid-template-columns: 1.2fr 0.8fr; }
+}
+.control-block { background: #0f172a; padding: 16px; border-radius: 10px; margin-bottom: 15px; }
+.control-block label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px; align-items: center; }
+.val-badge { background: #334155; padding: 2px 10px; border-radius: 30px; font-size: 0.9rem; color: #fff; }
+.control-block input[type="range"] { width: 100%; height: 6px; background: #475569; border-radius: 5px; cursor: pointer; }
+
+.simulator-display { display: flex; flex-direction: column; gap: 15px; }
+.output-card { background: #0f172a; padding: 20px; border-radius: 10px; text-align: center; border: 1px solid #334155; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.output-card h4 { font-size: 0.9rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px; }
+.big-metric { font-size: 2.8rem; font-weight: 900; color: #10b981; }
+.big-metric small { font-size: 1rem; color: var(--text-muted); }
+
+/* Indicador de Status do Simulador */
+.status-indicator {
+padding: 10px 20px;
+border-radius: 30px;
+font-weight: 800;
+font-size: 0.95rem;
+text-align: center;
+color: #fff;
+margin-top: 5px;
+display: inline-block;
+}
+.status-active { background-color: #0d9488; box-shadow: 0 0 15px rgba(13,148,136,0.4); }
+.status-ideal { background-color: #2563eb; box-shadow: 0 0 15px rgba(37,99,235,0.4); }
+.status-standby { background-color: #ea580c; box-shadow: 0 0 15px rgba(234,88,12,0.4); }
+.libras-accessible-placeholder { font-size: 0.85rem; color: var(--text-muted); text-align: center; border-top: 1px solid #334155; padding-top: 15px; margin-top: 10px; }
+/* Arvore do Mapa do Site */
+.bg-pure-dark { background-color: #020617 !important; }
+.map-tree-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 10px; }
+@media(min-width: 576px) { .map-tree-grid { grid-template-columns: 1fr 1fr; } }
+.tree-branch ul { list-style: none; margin-top: 6px; }
+.tree-branch li { margin: 6px 0; padding-left: 10px; border-left: 2px solid #475569; }
+.tree-branch a { color: #38bdf8; text-decoration: none; font-size: 0.95rem; }
+.tree-branch a:hover { text-decoration: underline; }
+footer { text-align: center; padding: 2.5rem 1rem; background-color: #020617; border-top: 1px solid #334155; font-size: 0.9rem; color: var(--text-muted); }
+
+---
+
+### 3. `script.js` (Inalterado, mas Reenviado)
+```javascript
+// Controle dos Modos de Acessibilidade Visual
+const contrastBtn = document.getElementById('toggle-contrast');
+const dyslexiaBtn = document.getElementById('toggle-dyslexia');
+
+if (contrastBtn) {
+    contrastBtn.addEventListener('click', () => {
+        document.body.classList.toggle('high-contrast');
+    });
+}
+
+if (dyslexiaBtn) {
+    dyslexiaBtn.addEventListener('click', () => {
+        document.body.classList.toggle('font-dyslexia');
+    });
+}
+
+// Captura de Variáveis do Simulador Interativo
+const sliderLdr = document.getElementById('slide-ldr');
+const sliderTemp = document.getElementById('slide-temp');
+
+const txtLdr = document.getElementById('txt-ldr');
+const txtTemp = document.getElementById('txt-temp');
+
+const outPotencia = document.getElementById('out-potencia');
+const outStatus = document.getElementById('out-status');
+
+// Lógica de Automação Computacional e Atualização de Telas
+function recalcularDashboard() {
+    if (!sliderLdr || !sliderTemp || !outPotencia || !outStatus) return;
+
+    const ldrValue = parseInt(sliderLdr.value, 10);
+    const tempValue = parseInt(sliderTemp.value, 10);
+
+    // Sincroniza os rótulos de texto
+    txtLdr.textContent = ldrValue;
+    txtTemp.textContent = tempValue;
+
+    // Cálculo da física de conversão (Fótons para Potência sob rendimento de 20%)
+    const calculoPotencia = ldrValue * 0.20;
+    outPotencia.textContent = calculoPotencia.toFixed(0);
+
+    // Reseta as classes de status de automação para evitar conflitos estáticos
+    outStatus.className = 'status-indicator';
+
+    // Regras de Automação do Hardware Robótico da Piscina
+    if (ldrValue > 450 && tempValue < 29) {
+        outStatus.textContent = "BOMBA OPERANDO";
+        outStatus.classList.add('status-active');
+    } else if (tempValue >= 29) {
+        outStatus.textContent = "TEMPERATURA IDEAL";
+        outStatus.classList.add('status-ideal');
+    } else {
+        outStatus.textContent = "STANDBY (NUVENS)";
+        outStatus.classList.add('status-standby');
+    }
+}
+
+// Vincula ouvidores de movimentação nos sliders
+if (sliderLdr && sliderTemp) {
+    sliderLdr.addEventListener('input', recalcularDashboard);
+    sliderTemp.addEventListener('input', recalcularDashboard);
+    
+    // Executa a carga inicial na montagem da tela
+    recalcularDashboard();
 }
