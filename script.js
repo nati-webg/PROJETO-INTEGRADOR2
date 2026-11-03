@@ -1,25 +1,20 @@
-// Logs de validação no console do desenvolvedor
-console.log("Script de Automação e Acessibilidade Ativo com Sucesso!");
-
-// Captura dos elementos manipuladores de Acessibilidade
+// Controle dos Modos Globais de Acessibilidade Visual
 const contrastBtn = document.getElementById('toggle-contrast');
 const dyslexiaBtn = document.getElementById('toggle-dyslexia');
 
 if (contrastBtn) {
     contrastBtn.addEventListener('click', () => {
         document.body.classList.toggle('high-contrast');
-        console.log("Estado de Alto Contraste Alternado.");
     });
 }
 
 if (dyslexiaBtn) {
     dyslexiaBtn.addEventListener('click', () => {
         document.body.classList.toggle('font-dyslexia');
-        console.log("Estado da Fonte de Leitura Alternado.");
     });
 }
 
-// Captura das variáveis dinâmicas do simulador interativo LDR
+// Captura de Variáveis Interativas (Simulador)
 const sliderLdr = document.getElementById('slide-ldr');
 const sliderTemp = document.getElementById('slide-temp');
 
@@ -29,25 +24,25 @@ const txtTemp = document.getElementById('txt-temp');
 const outPotencia = document.getElementById('out-potencia');
 const outStatus = document.getElementById('out-status');
 
-// Processamento lógico matemático e simulação de automação
+// Execução Lógica e Processamento Matemático em Tempo Real
 function recalcularDashboard() {
     if (!sliderLdr || !sliderTemp || !outPotencia || !outStatus) return;
 
     const ldrValue = parseInt(sliderLdr.value, 10);
     const tempValue = parseInt(sliderTemp.value, 10);
 
-    // Atualiza os indicadores de texto em tempo real
+    // Sincroniza labels em tempo real
     txtLdr.textContent = ldrValue;
     txtTemp.textContent = tempValue;
 
-    // Cálculo da física quântica (Efeito fotoelétrico estático a 20%)
+    // Cálculo Físico: Potência calculada sob Eficiência Quântica Média de 20%
     const calculoPotencia = ldrValue * 0.20;
     outPotencia.textContent = calculoPotencia.toFixed(0);
 
-    // Reseta as classes de estado anteriores para evitar sobreposição
+    // Reseta classes do indicador para evitar quebra com o Alto Contraste
     outStatus.className = 'status-indicator';
 
-    // Regras lógicas de acionamento do hardware robótico (Motobomba)
+    // Regras de Hardware Robótico de Automação para a Piscina
     if (ldrValue > 450 && tempValue < 29) {
         outStatus.textContent = "BOMBA LIGADA";
         outStatus.classList.add('status-active');
@@ -60,11 +55,11 @@ function recalcularDashboard() {
     }
 }
 
-// Vincula os eventos de escuta para os sliders
+// Vincula ouvidores aos controles deslizantes
 if (sliderLdr && sliderTemp) {
     sliderLdr.addEventListener('input', recalcularDashboard);
     sliderTemp.addEventListener('input', recalcularDashboard);
     
-    // Roda a função uma primeira vez no carregamento da tela
+    // Executa a primeira carga inicial na renderização da DOM
     recalcularDashboard();
 }
