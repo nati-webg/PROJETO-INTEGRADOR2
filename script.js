@@ -1,16 +1,25 @@
-// Manipulação dos Modos de Leitura e Acessibilidade Visual
+// Logs de validação no console do desenvolvedor
+console.log("Script de Automação e Acessibilidade Ativo com Sucesso!");
+
+// Captura dos elementos manipuladores de Acessibilidade
 const contrastBtn = document.getElementById('toggle-contrast');
 const dyslexiaBtn = document.getElementById('toggle-dyslexia');
 
-contrastBtn.addEventListener('click', () => {
-    document.body.classList.toggle('high-contrast');
-});
+if (contrastBtn) {
+    contrastBtn.addEventListener('click', () => {
+        document.body.classList.toggle('high-contrast');
+        console.log("Estado de Alto Contraste Alternado.");
+    });
+}
 
-dyslexiaBtn.addEventListener('click', () => {
-    document.body.classList.toggle('font-dyslexia');
-});
+if (dyslexiaBtn) {
+    dyslexiaBtn.addEventListener('click', () => {
+        document.body.classList.toggle('font-dyslexia');
+        console.log("Estado da Fonte de Leitura Alternado.");
+    });
+}
 
-// Captura de Elementos de Interface do Simulador Automatizado
+// Captura das variáveis dinâmicas do simulador interativo LDR
 const sliderLdr = document.getElementById('slide-ldr');
 const sliderTemp = document.getElementById('slide-temp');
 
@@ -20,23 +29,25 @@ const txtTemp = document.getElementById('txt-temp');
 const outPotencia = document.getElementById('out-potencia');
 const outStatus = document.getElementById('out-status');
 
-// Execução de Regras Matemáticas e Automação de Hardware (Sensores)
+// Processamento lógico matemático e simulação de automação
 function recalcularDashboard() {
+    if (!sliderLdr || !sliderTemp || !outPotencia || !outStatus) return;
+
     const ldrValue = parseInt(sliderLdr.value, 10);
     const tempValue = parseInt(sliderTemp.value, 10);
 
-    // Atualização de rótulos de texto reativos
+    // Atualiza os indicadores de texto em tempo real
     txtLdr.textContent = ldrValue;
     txtTemp.textContent = tempValue;
 
-    // Cálculo físico da potência com rendimento quântico estático de 20%
+    // Cálculo da física quântica (Efeito fotoelétrico estático a 20%)
     const calculoPotencia = ldrValue * 0.20;
     outPotencia.textContent = calculoPotencia.toFixed(0);
 
-    // Limpa classes anteriores para não conflitar com o Alto Contraste do CSS
+    // Reseta as classes de estado anteriores para evitar sobreposição
     outStatus.className = 'status-indicator';
 
-    // Sistema Robótico de controle lógico do trocador de calor da piscina
+    // Regras lógicas de acionamento do hardware robótico (Motobomba)
     if (ldrValue > 450 && tempValue < 29) {
         outStatus.textContent = "BOMBA LIGADA";
         outStatus.classList.add('status-active');
@@ -49,9 +60,11 @@ function recalcularDashboard() {
     }
 }
 
-// Escuta de mudanças nos controles dinâmicos
-sliderLdr.addEventListener('input', recalcularDashboard);
-sliderTemp.addEventListener('input', recalcularDashboard);
-
-// Execução imediata no carregamento da DOM
-recalcularDashboard();
+// Vincula os eventos de escuta para os sliders
+if (sliderLdr && sliderTemp) {
+    sliderLdr.addEventListener('input', recalcularDashboard);
+    sliderTemp.addEventListener('input', recalcularDashboard);
+    
+    // Roda a função uma primeira vez no carregamento da tela
+    recalcularDashboard();
+}
