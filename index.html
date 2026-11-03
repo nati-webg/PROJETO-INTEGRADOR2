@@ -7,18 +7,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Widget de Acessibilidade VLibras -->
+    <!-- Widget de Acessibilidade VLibras Oficial e Funcional -->
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
             <div class="vw-plugin-top-wrapper"></div>
         </div>
     </div>
+    <script src="https://vlibras.gov.br"></script>
+    <script>
+        new window.VLibras.Plugin('https://vlibras.gov.br');
+    </script>
 
     <!-- Barra de Acessibilidade Superior -->
     <div class="top-accessibility-bar">
-        <button id="toggle-contrast" class="btn-acc" aria-label="Alternar Alto Contraste">🌓 Alto Contraste</button>
-        <button id="toggle-dyslexia" class="btn-acc" aria-label="Mudar para Fonte Amigável para Dislexia">📖 Fonte Leitura</button>
+        <button id="toggle-contrast" class="btn-acc" aria-label="Alternar Alto Contraste">Compartilhar Alto Contraste</button>
+        <button id="toggle-dyslexia" class="btn-acc" aria-label="Mudar para Fonte Amigável de Leitura">Fonte Leitura</button>
     </div>
 
     <header>
@@ -52,7 +56,7 @@
         <section id="fotoeletrico" class="card bg-blue">
             <span class="badge-category">Mecanismo Quântico</span>
             <h2>Como a Luz vira Eletricidade?</h2>
-            <p>Dentro das células de silício dopado, ocorre o milagre da conversão física. Quando a frequência da onda incidente supera a *função trabalho* do material, os elétrons saltam da banda de valência para a banda de condução, criando corrente contínua.</p>
+            <p>Dentro das células de silício dopado, ocorre o milagre da conversão física. Quando a frequência da onda incidente supera a <em>função trabalho</em> do material, os elétrons saltam da banda de valência para a banda de condução, criando corrente contínua.</p>
             
             <div class="animacao-quantum" aria-label="Animação representativa do Efeito Fotoelétrico">
                 <div class="photon-wave">⚡ Fóton</div>
@@ -99,7 +103,7 @@
             <h2>Arquitetura de Sensores da Robótica</h2>
             <p>O cérebro mecânico da nossa piscina automatizada analisa as variáveis ambientais em tempo real por meio de hardware dedicado:</p>
             <div class="sensor-list">
-                <div class="sensor-item">🟢 <strong>Sensor LDR:</strong> Monitora a luminosidade ambiente para calcular a incidência de nuvens.</div>
+                <div class="sensor-item">🟢 <strong>Sensor LDR:</strong> Monitora a luminosidade ambiente para calcular a incidence de nuvens.</div>
                 <div class="sensor-item">🔵 <strong>Sensor DS18B20:</strong> Sonda térmica blindada inserida diretamente nos canos d'água da piscina.</div>
             </div>
         </section>
@@ -143,7 +147,7 @@
         <section id="mapasite" class="card bg-dark full-width">
             <h2>Mapa do Site - Navegação Estruturada</h2>
             <ul class="site-map-tree">
-                <li>🏠 <a href="#">Página Principal (Dashboard)</a>
+                <li>🏠 <a href="#top">Página Principal (Dashboard)</a>
                     <ul>
                         <li>📉 <a href="#corponegro">Fundamentos: Corpo Negro e Ondas</a></li>
                         <li>⚛️ <a href="#fotoeletrico">Conversão: Efeito Fotoelétrico</a></li>
@@ -155,13 +159,6 @@
         </section>
     </main>
 
-    <footer>
-        <p>© 2026 EcoSolar Hub. Desenvolvido com foco em Educação Tecnológica, Sustentabilidade e Inclusão Universal.</p>
-    </footer>
-
-    <script src="https://vlibras.gov.br"></script>
     <script src="script.js"></script>
 </body>
 </html>
-
-
