@@ -1,4 +1,6 @@
-// Controle dos Modos Globais de Acessibilidade Visual
+// ==========================================================================
+// 1. GERENCIAMENTO DE ACESSIBILIDADE VISUAL (BOTOES SUPERIORES)
+// ==========================================================================
 const contrastBtn = document.getElementById('toggle-contrast');
 const dyslexiaBtn = document.getElementById('toggle-dyslexia');
 
@@ -14,7 +16,9 @@ if (dyslexiaBtn) {
     });
 }
 
-// Captura de Variáveis Interativas (Simulador)
+// ==========================================================================
+// 2. CAPTURA DE COMPONENTES INTERATIVOS DO SIMULADOR (SENSORES E DISPLAYS)
+// ==========================================================================
 const sliderLdr = document.getElementById('slide-ldr');
 const sliderTemp = document.getElementById('slide-temp');
 
@@ -24,42 +28,52 @@ const txtTemp = document.getElementById('txt-temp');
 const outPotencia = document.getElementById('out-potencia');
 const outStatus = document.getElementById('out-status');
 
-// Execução Lógica e Processamento Matemático em Tempo Real
+// ==========================================================================
+// 3. LOGICA MATEMATICA DA FISICA E AUTOMACAO DA MOTOBOMBA
+// ==========================================================================
 function recalcularDashboard() {
+    // Evita erros se algum elemento nao for carregado na DOM
     if (!sliderLdr || !sliderTemp || !outPotencia || !outStatus) return;
 
+    // Converte os valores textuais dos Sliders para numeros inteiros
     const ldrValue = parseInt(sliderLdr.value, 10);
     const tempValue = parseInt(sliderTemp.value, 10);
 
-    // Sincroniza labels em tempo real
+    // Sincroniza os valores numericos na tela em tempo real
     txtLdr.textContent = ldrValue;
     txtTemp.textContent = tempValue;
 
-    // Cálculo Físico: Potência calculada sob Eficiência Quântica Média de 20%
+    // [PROFUNDIDADE CIENTIFICA] Calculo da Potencia Gerada com Eficiencia Quântica de 20%
     const calculoPotencia = ldrValue * 0.20;
     outPotencia.textContent = calculoPotencia.toFixed(0);
 
-    // Reseta classes do indicador para evitar quebra com o Alto Contraste
+    // Reseta as classes css do indicador para nao bugar no Alto Contraste
     outStatus.className = 'status-indicator';
 
-    // Regras de Hardware Robótico de Automação para a Piscina
+    // [ROBOTICA] Regras Lógicas de Tomada de Decisao do Microcontrolador
     if (ldrValue > 450 && tempValue < 29) {
-        outStatus.textContent = "BOMBA LIGADA";
+        // Alta radiacao e agua fria: Aciona o aquecimento
+        outStatus.textContent = "BOMBA OPERANDO";
         outStatus.classList.add('status-active');
     } else if (tempValue >= 29) {
+        // Agua ja atingiu o patamar de conforto termico ideal
         outStatus.textContent = "TEMPERATURA IDEAL";
         outStatus.classList.add('status-ideal');
     } else {
-        outStatus.textContent = "MODO STANDBY (NUVENS)";
+        // Baixa radiacao (Noite ou Céu muito Nublado): Preserva o hardware
+        outStatus.textContent = "STANDBY (NUVENS)";
         outStatus.classList.add('status-standby');
     }
 }
 
-// Vincula ouvidores aos controles deslizantes
+// ==========================================================================
+// 4. ATIVACAO DOS EVENTOS E INICIALIZACAO DA PAGINA
+// ==========================================================================
 if (sliderLdr && sliderTemp) {
+    // Ouve as alteracoes nos controles enquanto o usuario arrasta o slider
     sliderLdr.addEventListener('input', recalcularDashboard);
     sliderTemp.addEventListener('input', recalcularDashboard);
     
-    // Executa a primeira carga inicial na renderização da DOM
+    // Executa a funcao uma primeira vez ao abrir a pagina para definir os valores iniciais
     recalcularDashboard();
 }
