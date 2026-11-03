@@ -14,27 +14,54 @@
     --clr-dark: #111c24;
 }
 
-/* Folha de Contraste para Acessibilidade */
+/* Folha de Contraste Total para Acessibilidade */
 .high-contrast {
-    --body-bg: #000000;
-    --card-default: #000000;
-    --text-white: #ffffff;
-    --clr-orange: #000000;
-    --clr-blue: #000000;
-    --clr-purple: #000000;
-    --clr-teal: #000000;
-    --clr-yellow: #000000;
-    --clr-dark: #000000;
+    --body-bg: #000000 !important;
+    --card-default: #000000 !important;
+    --text-white: #ffff00 !important; /* Texto amarelo para máxima leitura */
+    --clr-orange: #000000 !important;
+    --clr-blue: #000000 !important;
+    --clr-purple: #000000 !important;
+    --clr-teal: #000000 !important;
+    --clr-yellow: #000000 !important;
+    --clr-dark: #000000 !important;
 }
 
-.high-contrast .card {
-    border: 3px solid #fff !important;
-    background-color: #000 !important;
-    color: #fff !important;
+/* Regras Estritas de Substituição de Cores no Modo de Alto Contraste */
+.high-contrast * {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    background-image: none !important;
+    border-color: #ffffff !important;
+    box-shadow: none !important;
 }
 
+.high-contrast strong, 
+.high-contrast span, 
+.high-contrast a, 
+.high-contrast #out-potencia,
+.high-contrast h2 {
+    color: #ffff00 !important; /* Elementos em destaque mudam para amarelo */
+}
+
+.high-contrast .card,
+.high-contrast th,
+.high-contrast td,
+.high-contrast .controls-panel,
+.high-contrast .metric-card,
+.high-contrast .sensor-item {
+    border: 2px solid #ffffff !important;
+}
+
+/* Fonte Amigável para Leitura/Dislexia */
 .font-dyslexia {
-    --font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif;
+    --font-family: 'OpenDyslexic', 'Verdana', 'Comic Sans MS', sans-serif !important;
+}
+
+.font-dyslexia * {
+    font-family: var(--font-family) !important;
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
 }
 
 * {
@@ -48,6 +75,14 @@ body {
     color: var(--text-white);
     font-family: var(--font-family);
     padding-bottom: 20px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* [CRITÉRIO 4] Navegação Amigável e Contornos de Foco por Teclado (TAB) */
+*:focus-visible {
+    outline: 4px solid #06b6d4 !important;
+    outline-offset: 4px !important;
+    box-shadow: 0 0 12px #06b6d4 !important;
 }
 
 /* Barra de Acessibilidade */
@@ -63,14 +98,11 @@ body {
     background-color: #334155;
     color: white;
     border: none;
-    padding: 6px 12px;
+    padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.85rem;
-}
-
-.btn-acc:focus, a:focus, input:focus {
-    outline: 3px solid #38bdf8;
+    font-weight: 600;
 }
 
 /* Header & Menu */
@@ -116,9 +148,14 @@ header {
     padding: 6px 12px;
     background-color: rgba(255,255,255,0.1);
     border-radius: 4px;
+    transition: background-color 0.2s ease;
 }
 
-/* Dashboard Grid Layout (Mobile-first para Desktop) */
+.nav-links a:hover {
+    background-color: rgba(255,255,255,0.25);
+}
+
+/* Dashboard Grid Layout */
 .dashboard-layout {
     max-width: 1300px;
     margin: 2rem auto;
@@ -150,7 +187,7 @@ header {
 .bg-purple { background-color: var(--clr-purple); }
 .bg-teal { background-color: var(--clr-teal); }
 .bg-yellow { background-color: #e5ba13; color: #111; }
-.bg-dark { background-color: var(--clr-dark); border: 1px solid #334155;}
+.bg-dark { background-color: var(--clr-dark); border: 1px solid #334155; }
 
 .badge-category {
     display: inline-block;
@@ -185,6 +222,7 @@ p { margin-bottom: 15px; line-height: 1.6; }
     position: relative;
     height: 110px;
     color: white;
+    overflow: hidden;
 }
 
 .photon-wave {
@@ -255,7 +293,7 @@ th { background-color: rgba(0,0,0,0.4); color: white; }
     border-radius: 8px;
 }
 .input-group { margin-bottom: 15px; }
-.input-group input { width: 100%; margin-top: 8px; }
+.input-group input { width: 100%; margin-top: 8px; cursor: pointer; }
 
 .display-panel {
     display: flex;
@@ -270,13 +308,20 @@ th { background-color: rgba(0,0,0,0.4); color: white; }
     text-align: center;
 }
 .metric-card p { font-size: 2rem; font-weight: bold; margin: 5px 0 0; color: var(--clr-teal);}
+
+/* Classes Estilizadas para Controle do Estado da Motobomba via JS */
 .status-indicator {
     display: inline-block;
     margin-top: 10px;
     padding: 6px 12px;
     border-radius: 4px;
     font-weight: bold;
+    color: #ffffff;
+    transition: background-color 0.2s ease;
 }
+.status-active { background-color: #00a896; }
+.status-ideal { background-color: #2563eb; }
+.status-standby { background-color: #ff6b35; }
 
 .libras-accessible-placeholder {
     background-color: rgba(0,0,0,0.05);
@@ -289,7 +334,8 @@ th { background-color: rgba(0,0,0,0.4); color: white; }
 /* Árvore do Mapa do Site */
 .site-map-tree ul { margin-left: 20px; padding-top: 5px; }
 .site-map-tree li { margin: 6px 0; }
-.site-map-tree a { color: #58a6ff; }
+.site-map-tree a { color: #58a6ff; font-weight: 600; text-decoration: none; }
+.site-map-tree a:hover { text-decoration: underline; }
 
 footer {
     text-align: center;
