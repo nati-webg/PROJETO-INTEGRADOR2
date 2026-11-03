@@ -1,4 +1,4 @@
-/* Definição de Cores Vivas e Variáveis Estilizadas estilo Dashboard */
+/* Definição de Cores Vivas - Tema Dashboard Padrão */
 :root {
     --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --body-bg: #111827;
@@ -14,56 +14,6 @@
     --clr-dark: #111c24;
 }
 
-/* Folha de Contraste Total para Acessibilidade */
-.high-contrast {
-    --body-bg: #000000 !important;
-    --card-default: #000000 !important;
-    --text-white: #ffff00 !important; /* Texto amarelo para máxima leitura */
-    --clr-orange: #000000 !important;
-    --clr-blue: #000000 !important;
-    --clr-purple: #000000 !important;
-    --clr-teal: #000000 !important;
-    --clr-yellow: #000000 !important;
-    --clr-dark: #000000 !important;
-}
-
-/* Regras Estritas de Substituição de Cores no Modo de Alto Contraste */
-.high-contrast * {
-    background-color: #000000 !important;
-    color: #ffffff !important;
-    background-image: none !important;
-    border-color: #ffffff !important;
-    box-shadow: none !important;
-}
-
-.high-contrast strong, 
-.high-contrast span, 
-.high-contrast a, 
-.high-contrast #out-potencia,
-.high-contrast h2 {
-    color: #ffff00 !important; /* Elementos em destaque mudam para amarelo */
-}
-
-.high-contrast .card,
-.high-contrast th,
-.high-contrast td,
-.high-contrast .controls-panel,
-.high-contrast .metric-card,
-.high-contrast .sensor-item {
-    border: 2px solid #ffffff !important;
-}
-
-/* Fonte Amigável para Leitura/Dislexia */
-.font-dyslexia {
-    --font-family: 'OpenDyslexic', 'Verdana', 'Comic Sans MS', sans-serif !important;
-}
-
-.font-dyslexia * {
-    font-family: var(--font-family) !important;
-    letter-spacing: 0.05em;
-    word-spacing: 0.1em;
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -75,17 +25,75 @@ body {
     color: var(--text-white);
     font-family: var(--font-family);
     padding-bottom: 20px;
-    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* [CRITÉRIO 4] Navegação Amigável e Contornos de Foco por Teclado (TAB) */
+/* ==========================================================================
+   [CRITÉRIO 2] REGRAS ESTRITAS DE ALTO CONTRASTE (Fundo Preto / Texto Amarelo e Branco)
+   ========================================================================== */
+body.high-contrast {
+    background-color: #000000 !important;
+    color: #ffff00 !important;
+}
+
+body.high-contrast * {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+body.high-contrast strong, 
+body.high-contrast span, 
+body.high-contrast a, 
+body.high-contrast h1, 
+body.high-contrast h2, 
+body.high-contrast h3,
+body.high-contrast #out-potencia,
+body.high-contrast #txt-ldr,
+body.high-contrast #txt-temp {
+    color: #ffff00 !important; /* Elementos de destaque em Amarelo */
+}
+
+body.high-contrast .card,
+body.high-contrast table,
+body.high-contrast th,
+body.high-contrast td,
+body.high-contrast .controls-panel,
+body.high-contrast .metric-card,
+body.high-contrast .sensor-item,
+body.high-contrast input[type="range"] {
+    border: 2px solid #ffffff !important;
+}
+
+/* ==========================================================================
+   [CRITÉRIO 3] REGRAS DE FONTE DE LEITURA ACESSÍVEL (Estilo Dyslexia)
+   ========================================================================== */
+body.font-dyslexia * {
+    font-family: 'Comic Sans MS', 'Verdana', sans-serif !important;
+    font-size: 1.1rem !important;
+    letter-spacing: 0.07em !important;
+    word-spacing: 0.1em !important;
+    line-height: 1.7 !important;
+}
+
+body.font-dyslexia h1, 
+body.font-dyslexia h2, 
+body.font-dyslexia .logo { 
+    font-size: 1.7rem !important; 
+    font-weight: bold !important;
+}
+
+/* ==========================================================================
+   [CRITÉRIO 4] NAVEGAÇÃO POR TECLADO (Foco Visível)
+   ========================================================================== */
 *:focus-visible {
     outline: 4px solid #06b6d4 !important;
     outline-offset: 4px !important;
     box-shadow: 0 0 12px #06b6d4 !important;
 }
 
-/* Barra de Acessibilidade */
+/* Barra de Acessibilidade Superior */
 .top-accessibility-bar {
     background-color: #0f172a;
     padding: 8px;
@@ -148,11 +156,6 @@ header {
     padding: 6px 12px;
     background-color: rgba(255,255,255,0.1);
     border-radius: 4px;
-    transition: background-color 0.2s ease;
-}
-
-.nav-links a:hover {
-    background-color: rgba(255,255,255,0.25);
 }
 
 /* Dashboard Grid Layout */
@@ -174,7 +177,7 @@ header {
     }
 }
 
-/* Cartões Coloridos do Dashboard */
+/* Cartões do Dashboard */
 .card {
     border-radius: 12px;
     padding: 2rem;
@@ -203,10 +206,8 @@ header {
 h2 { margin-bottom: 15px; font-size: 1.6rem; }
 p { margin-bottom: 15px; line-height: 1.6; }
 
-/* Gráficos e Barras CSS Coloridas */
-.visual-spectrum {
-    margin-top: 15px;
-}
+/* Gráficos e Espectro */
+.visual-spectrum { margin-top: 15px; }
 .spectrum-bar {
     height: 25px;
     background: linear-gradient(90deg, violet, blue, green, yellow, orange, red);
@@ -225,10 +226,8 @@ p { margin-bottom: 15px; line-height: 1.6; }
     overflow: hidden;
 }
 
-.photon-wave {
-    position: absolute;
-    animation: triggerPhoton 3s infinite ease-in;
-}
+.photon-wave { position: absolute; animation: triggerPhoton 3s infinite ease-in; }
+.silicon-atom { position: absolute; left: 40%; top: 35%; font-size: 1.2rem; }
 .electron-jump {
     position: absolute;
     left: 45%;
@@ -241,12 +240,6 @@ p { margin-bottom: 15px; line-height: 1.6; }
     font-weight: bold;
     opacity: 0;
     animation: freeElectron 3s infinite ease-out;
-}
-.silicon-atom {
-    position: absolute;
-    left: 40%;
-    top: 35%;
-    font-size: 1.2rem;
 }
 
 @keyframes triggerPhoton {
@@ -261,7 +254,7 @@ p { margin-bottom: 15px; line-height: 1.6; }
     100% { left: 90%; opacity: 1; }
 }
 
-/* Tabelas Estilizadas */
+/* Tabelas */
 .table-responsive { overflow-x: auto; }
 table {
     width: 100%;
@@ -295,10 +288,7 @@ th { background-color: rgba(0,0,0,0.4); color: white; }
 .input-group { margin-bottom: 15px; }
 .input-group input { width: 100%; margin-top: 8px; cursor: pointer; }
 
-.display-panel {
-    display: flex;
-    gap: 15px;
-}
+.display-panel { display: flex; gap: 15px; }
 .metric-card {
     background: #111c24;
     color: white;
@@ -309,7 +299,7 @@ th { background-color: rgba(0,0,0,0.4); color: white; }
 }
 .metric-card p { font-size: 2rem; font-weight: bold; margin: 5px 0 0; color: var(--clr-teal);}
 
-/* Classes Estilizadas para Controle do Estado da Motobomba via JS */
+/* Classes de Estado Controle da Motobomba */
 .status-indicator {
     display: inline-block;
     margin-top: 10px;
@@ -317,11 +307,10 @@ th { background-color: rgba(0,0,0,0.4); color: white; }
     border-radius: 4px;
     font-weight: bold;
     color: #ffffff;
-    transition: background-color 0.2s ease;
 }
-.status-active { background-color: #00a896; }
-.status-ideal { background-color: #2563eb; }
-.status-standby { background-color: #ff6b35; }
+.status-active { background-color: #00a896 !important; color: #fff !important; }
+.status-ideal { background-color: #2563eb !important; color: #fff !important; }
+.status-standby { background-color: #ff6b35 !important; color: #fff !important; }
 
 .libras-accessible-placeholder {
     background-color: rgba(0,0,0,0.05);
@@ -334,7 +323,7 @@ th { background-color: rgba(0,0,0,0.4); color: white; }
 /* Árvore do Mapa do Site */
 .site-map-tree ul { margin-left: 20px; padding-top: 5px; }
 .site-map-tree li { margin: 6px 0; }
-.site-map-tree a { color: #58a6ff; font-weight: 600; text-decoration: none; }
+.site-map-tree a { color: #58a6ff; text-decoration: none; font-weight: 600; }
 .site-map-tree a:hover { text-decoration: underline; }
 
 footer {
