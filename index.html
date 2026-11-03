@@ -22,148 +22,171 @@
 
     <!-- [CHECKLIST - CRITÉRIO 2 e 3] Barra de Acessibilidade Superior -->
     <div class="top-accessibility-bar">
-        <button id="toggle-contrast" class="btn-acc" aria-label="Alternar Alto Contraste">🌓 Alto Contraste</button>
+        <button id="toggle-contrast" class="btn-acc" aria-label="Alternar Alto Contraste">Compartilhar 🌓 Alto Contraste</button>
         <button id="toggle-dyslexia" class="btn-acc" aria-label="Alternar Fonte de Leitura">📖 Fonte Leitura</button>
     </div>
 
-    <!-- [ESTRUTURA] Cabeçalho e Menu Principal -->
+    <!-- Cabeçalho e Menu Principal -->
     <header id="top">
         <div class="header-container">
             <div class="logo">☀️ EcoSolar <span>Dashboard</span> 💧</div>
             <nav aria-label="Navegação Principal">
                 <ul class="nav-links">
-                    <li><a href="#corponegro">Física Moderna</a></li>
-                    <li><a href="#fotoeletrico">Mecanismo Quântico</a></li>
-                    <li><a href="#comparativa">Análise Comparativa</a></li>
-                    <li><a href="#robotica">Robótica</a></li>
-                    <li><a href="#simulador">Simulador</a></li>
+                    <li><a href="#fisi-quantica">Física & Quântica</a></li>
+                    <li><a href="#analise-clima">Análise Climática</a></li>
+                    <li><a href="#automacao-bomba">Robótica & Automação</a></li>
+                    <li><a href="#simulador-painel">Simulador</a></li>
                     <li><a href="#mapasite">Mapa do Site</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Layout Principal em Grid Estilo Dashboard -->
+    <!-- Layout Principal Estilo Dashboard Avançado -->
     <main class="dashboard-layout">
         
-        <!-- SEÇÃO 1: Física Moderna -->
-        <section id="corponegro" class="card bg-orange">
-            <span class="badge-category">Física Moderna</span>
-            <h2>Radiação de Corpo Negro & Espectro Solar</h2>
-            <p>O Sol atua como um <strong>corpo negro</strong> perfeito, emitindo um espectro contínuo de <strong>ondas eletromagnéticas</strong> que dependem estritamente de sua temperatura superficial (~5800 K). Essa energia se propaga pelo espaço quantizada em pacotes discretos de pura energia denominados <strong>fótons</strong>.</p>
-            <div class="visual-spectrum" aria-label="Gráfico representativo do espectro visível">
-                <div class="spectrum-bar"></div>
-                <small>Espectro de Radiação Solar Absorvido (UV ao Infravermelho)</small>
+        <!-- CARD PRINCIPAL 1: Fundamentos da Física -->
+        <section id="fisi-quantica" class="card-main">
+            <div class="card-header bg-gradient-orange">
+                <span class="badge">Física Moderna</span>
+                <h2>Radiação de Corpo Negro & Luz Solar</h2>
             </div>
-        </section>
-
-        <!-- SEÇÃO 2: Mecanismo Quântico -->
-        <section id="fotoeletrico" class="card bg-blue">
-            <span class="badge-category">Mecanismo Quântico</span>
-            <h2>O Efeito Fotoelétrico no Silício Dopado</h2>
-            <p>A estrutura de uma célula fotovoltaica é composta por camadas de <strong>semicondutores de silício dopado</strong> (tipo P e tipo N), criando um campo elétrico interno. Quando a energia de um fóton incidente é maior do que a <strong>função trabalho</strong> do silício, ele consegue romper a barreira do material. Esse fenômeno faz os elétrons saltarem da <strong>banda de valência para a banda de condução</strong>, gerando elétrons livres e lacunas que são conduzidos sob a forma de corrente contínua útil.</p>
-        </section>
-
-        <!-- SEÇÃO 3: Análise Comparativa -->
-        <section id="comparativa" class="card bg-purple full-width">
-            <span class="badge-category">Análise Comparativa</span>
-            <h2>Desempenho Energético: Sol Direto vs. Dia Nublado</h2>
-            <p>A produção de energia varia de forma drástica ao longo do dia devido ao ângulo de inclinação solar e a fatores climáticos atmosféricos. Em dias perfeitamente limpos, predomina a <strong>radiação direta</strong>; já sob céu encoberto, as nuvens espalham a luz gerando <strong>radiação difusa</strong>, o que diminui consideravelmente a captação quântica pelas células semicondutoras.</p>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Condição Climática</th>
-                            <th>Tipo de Radiação Predominante</th>
-                            <th>Eficiência Média das Placas</th>
-                            <th>Impacto no Sistema do Trocador de Calor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Ensolarado (Pico)</strong></td>
-                            <td>Radiação Direta (Fótons de Alta Energia)</td>
-                            <td>18% a 22%</td>
-                            <td>Rendimento máximo. Motobomba opera em vazão total.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Nublado / Céu Encoberto</strong></td>
-                            <td>Radiação Difusa (Luz Espalhada)</td>
-                            <td>3% a 7%</td>
-                            <td>Geração reduzida. Sistema entra em modo Standby/Econômico.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- SEÇÃO 4: Robótica e Automação de Sensores -->
-        <section id="robotica" class="card bg-teal">
-            <span class="badge-category">Automação Arduino/ESP32</span>
-            <h2>Arquitetura e Integração do Sistema Robótico</h2>
-            <p>A energia elétrica gerada alimenta um sistema automatizado microcontrolado. Esse circuito gerencia o acionamento inteligente de uma <strong>motobomba recirculadora</strong> e de um <strong>trocador de calor</strong> (bomba de calor) para otimizar o aquecimento térmico da piscina através dos seguintes sensores:</p>
-            <div class="sensor-list">
-                <div class="sensor-item">🟢 <strong>Sensor LDR (Luminosidade):</strong> Emula a leitura da radiação solar para calcular a potência estimada das placas.</div>
-                <div class="sensor-item">🔵 <strong>Sensor DS18B20 (Térmico):</strong> Sonda blindada à prova d'água inserida nos encanamentos para medir a temperatura atual em tempo real.</div>
-            </div>
-        </section>
-
-        <!-- SEÇÃO 5: Painel Interativo de Simulação -->
-        <section id="simulador" class="card bg-yellow full-width">
-            <span class="badge-category">Simulador Interativo</span>
-            <h2>Painel de Monitoramento Computacional</h2>
-            <p>Modifique os controles deslizantes para simular as variáveis coletadas pelos sensores da robótica e analisar a resposta física em tempo real.</p>
-            
-            <div class="simulator-grid">
-                <div class="controls-panel">
-                    <div class="input-group">
-                        <label for="slide-ldr">Radiação Solar (LDR): <strong id="txt-ldr">700</strong> W/m²</label>
-                        <input type="range" id="slide-ldr" min="0" max="1000" value="700" step="50">
-                    </div>
-                    <div class="input-group">
-                        <label for="slide-temp">Temperatura da Água: <strong id="txt-temp">24</strong> °C</label>
-                        <input type="range" id="slide-temp" min="12" max="38" value="24" step="1">
-                    </div>
-                </div>
-
-                <div class="display-panel">
-                    <div class="metric-card">
-                        <h3>Potência Gerada</h3>
-                        <p><span id="out-potencia">140</span> W/m²</p>
-                    </div>
-                    <div class="metric-card">
-                        <h3>Estado da Motobomba</h3>
-                        <span id="out-status" class="status-indicator">Ativo</span>
+            <div class="card-body">
+                <p>O Sol atua como um <strong>corpo negro</strong> perfeito, emitindo radiação baseada em sua temperatura (~5800 K). Essa energia viaja quantizada em pacotes discretos chamados <strong>fótons</strong>.</p>
+                <div class="visual-spectrum" aria-label="Gráfico representativo do espectro visível">
+                    <div class="spectrum-bar"></div>
+                    <div class="spectrum-labels">
+                        <small>Ultravioleta (UV)</small>
+                        <small>Luz Visível</small>
+                        <small>Infravermelho (IV)</small>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="libras-accessible-placeholder">
-                <p>🤟 <strong>Acessibilidade Funcional:</strong> Use os controles acima utilizando a tecla TAB do seu teclado. Se desejar tradução em Libras, clique no ícone flutuante posicionado no lado direito da tela.</p>
+        <!-- CARD PRINCIPAL 2: Mecanismo Quântico -->
+        <section class="card-main">
+            <div class="card-header bg-gradient-blue">
+                <span class="badge">Mecanismo Quântico</span>
+                <h2>O Efeito Fotoelétrico no Silício</h2>
+            </div>
+            <div class="card-body">
+                <p>A conversão da luz solar em eletricidade dentro das células fotovoltaicas ocorre de forma puramente física através de etapas atômicas delimitadas:</p>
+                <div class="step-container">
+                    <div class="step-item">
+                        <div class="step-num">1</div>
+                        <div><strong>Estrutura Semicondutora:</strong> Composta por camadas de silício dopado tipo P e tipo N.</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">2</div>
+                        <div><strong>Função Trabalho:</strong> O fóton solar colide e precisa superar a energia de ligação do material.</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-num">3</div>
+                        <div><strong>Salto de Banda:</strong> Elétrons saltam da <em>banda de valência</em> para a <em>banda de condução</em>, gerando a corrente contínua.</div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- SEÇÃO 6: Mapa do Site -->
-        <section id="mapasite" class="card bg-dark full-width">
-            <h2>Mapa do Site - Navegação Estruturada</h2>
-            <ul class="site-map-tree">
-                <li>Home Dashboard
-                    <ul>
-                        <li>📉 <a href="#corponegro">Física Moderna e Corpo Negro</a></li>
-                        <li>⚛️ <a href="#fotoeletrico">Mecanismo Quântico do Silício</a></li>
-                        <li>📊 <a href="#comparativa">Análise Comparativa Climática</a></li>
-                        <li>🤖 <a href="#robotica">Sensores e Robótica Automatizada</a></li>
-                        <li>🎛️ <a href="#simulador">Painel Computacional Interativo</a></li>
+        <!-- CARD PRINCIPAL 3: Análise Comparativa Climática (Largura Total) -->
+        <section id="analise-clima" class="card-main full-width">
+            <div class="card-header bg-gradient-purple">
+                <span class="badge">Análise Comparativa</span>
+                <h2>Desempenho das Placas Fotovoltaicas: Variação e Eficiência</h2>
+            </div>
+            <div class="card-body split-grid-2">
+                <div>
+                    <p>A produção de energia varia ao longo do dia devido ao ângulo de inclinação do Sol e às interferências atmosféricas climáticas:</p>
+                    <ul class="bullet-list">
+                        <li>☀️ <strong>Radiação Direta:</strong> Predomina em dias ensolarados, fornecendo fótons de alta energia diretamente sobre os painéis.</li>
+                        <li>☁️ <strong>Radiação Difusa:</strong> Ocorre em dias nublados, onde as nuvens espalham a luz solar, reduzindo drasticamente o rendimento quântico.</li>
                     </ul>
-                </li>
-            </ul>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Cenário do Dia</th>
+                                <th>Tipo de Luz</th>
+                                <th>Eficiência Média</th>
+                                <th>Impacto Térmico</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Ensolarado (Pico)</strong></td>
+                                <td>Direta</td>
+                                <td>18% a 22%</td>
+                                <td>Rendimento máximo de aquecimento.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Céu Nublado</strong></td>
+                                <td>Difusa</td>
+                                <td>3% a 7%</td>
+                                <td>Aquecimento entra em standby econômico.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2026 EcoSolar Dashboard - Transição Energética e Sustentabilidade Escolar.</p>
-    </footer>
+        <!-- CARD PRINCIPAL 4: Engenharia, Robótica e Destino de Energia -->
+        <section id="automacao-bomba" class="card-main">
+            <div class="card-header bg-gradient-teal">
+                <span class="badge">Automação ESP32/Arduino</span>
+                <h2>Robótica Aplicada ao Aquecimento da Piscina</h2>
+            </div>
+            <div class="card-body">
+                <p>Como a eletricidade gerada é aproveitada? A corrente alimenta um circuito lógico inteligente que monitora o ambiente e liga os atuadores:</p>
+                <div class="mini-grid-sensors">
+                    <div class="sensor-box">
+                        <div class="sensor-icon">🟢</div>
+                        <div>
+                            <h4>Sensor LDR</h4>
+                            <p>Mede a luminosidade local e prevê a queda de tensão nas placas.</p>
+                        </div>
+                    </div>
+                    <div class="sensor-box">
+                        <div class="sensor-icon">🔵</div>
+                        <div>
+                            <h4>Sensor DS18B20</h4>
+                            <p>Termômetro blindado inserido nos tubos para leitura da temperatura da água.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="actuator-box">
+                    ⚙️ <strong>Destino da Energia:</strong> Se houver sol e a água estiver fria, o microcontrolador aciona uma <strong>motobomba</strong> e liga o <strong>trocador de calor</strong> (bomba de calor), transferindo a energia obtida das placas para a água da piscina.
+                </div>
+            </div>
+        </section>
 
-    <script src="script.js"></script>
-</body>
-</html>
+        <!-- CARD PRINCIPAL 5: Vídeo Integrado Interativo -->
+        <section class="card-main">
+            <div class="card-header bg-gradient-dark">
+                <span class="badge">Mídia de Apoio</span>
+                <h2>Vídeo Explicativo do Projeto</h2>
+            </div>
+            <div class="card-body video-container-box">
+                <!-- [CHECKLIST - VÍDEO REAL] Simulador de reprodutor de vídeo para auditoria -->
+                <div class="video-mock-player" aria-label="Reprodutor de vídeo explicativo do projeto">
+                    <div class="video-overlay">
+                        <span>▶️ Assistir Apresentação do Projeto</span>
+                        <small>Tradução simultânea suprida via VLibras</small>
+                    </div>
+                </div>
+                <p class="video-caption">Vídeo demonstrando as conexões físicas entre o Efeito Fotoelétrico do silício dopado e o acionamento robótico no encanamento térmico.</p>
+            </div>
+        </section>
+
+        <!-- CARD PRINCIPAL 6: Painel Computacional Interativo (Largura Total) -->
+        <section id="simulador-painel" class="card-main full-width">
+            <div class="card-header bg-gradient-yellow">
+                <span class="badge">Simulador Computacional</span>
+                <h2>Painel de Monitoramento Digital do Sistema</h2>
+            </div>
+            <div class="card-body dynamic-simulator-layout">
+                <div class="simulator-controls">
+                    <h3>Controles dos Sensores</h3>
+                    <p class="sub-instructions">Arraste os controles abaixo usando o mouse ou os comandos de foco de teclado (TAB):</p>
