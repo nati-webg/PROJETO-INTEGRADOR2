@@ -14,8 +14,7 @@ const CONSTANTES = {
   BOLTZMANN: 1.381e-23,       // J/K
   LUZ: 3e8,                   // m/s
   CALOR_ESP_AGUA: 4186,       // J/(kg·°C)
-  DENSIDADE_AGUA: 1,          // kg/L
-  WIEN: 2.898e-3              // m·K
+  DENSIDADE_AGUA: 1           // kg/L
 };
 
 // Estado global
@@ -32,7 +31,6 @@ const estado = {
 // 2. ACESSIBILIDADE
 // ==========================================
 
-// Aumentar fonte
 document.getElementById('btnAumentarFonte').addEventListener('click', () => {
   if (estado.fonteAtual < 24) {
     estado.fonteAtual += 2;
@@ -41,7 +39,6 @@ document.getElementById('btnAumentarFonte').addEventListener('click', () => {
   }
 });
 
-// Diminuir fonte
 document.getElementById('btnDiminuirFonte').addEventListener('click', () => {
   if (estado.fonteAtual > 12) {
     estado.fonteAtual -= 2;
@@ -50,21 +47,18 @@ document.getElementById('btnDiminuirFonte').addEventListener('click', () => {
   }
 });
 
-// Alto contraste
 document.getElementById('btnAltoContraste').addEventListener('click', () => {
   document.body.classList.toggle('alto-contraste');
   estado.altoContraste = !estado.altoContraste;
   announce(estado.altoContraste ? 'Alto contraste ativado' : 'Alto contraste desativado');
 });
 
-// Fonte para dislexia
 document.getElementById('btnDislexia').addEventListener('click', () => {
   document.body.classList.toggle('dislexia');
   estado.dislexia = !estado.dislexia;
   announce(estado.dislexia ? 'Fonte para dislexia ativada' : 'Fonte padrão ativada');
 });
 
-// Leitor de texto
 document.getElementById('btnLeitor').addEventListener('click', () => {
   estado.leitorAtivo = !estado.leitorAtivo;
   announce(estado.leitorAtivo ? 'Leitor de texto ativado. Clique em qualquer parágrafo para ouvir.' : 'Leitor desativado');
@@ -120,7 +114,6 @@ menuToggle.addEventListener('click', () => {
   menuToggle.textContent = exp ? '✕' : '☰';
 });
 
-// Fechar menu ao clicar em link
 document.querySelectorAll('.nav-menu a').forEach(link => {
   link.addEventListener('click', () => {
     if (window.innerWidth <= 968) {
@@ -136,14 +129,12 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
 // ==========================================
 
 document.addEventListener('keydown', (e) => {
-  // ESC fecha menu mobile
   if (e.key === 'Escape' && navMenu.classList.contains('active')) {
     navMenu.classList.remove('active');
     menuToggle.focus();
   }
 });
 
-// Atualizar link ativo conforme scroll
 const secoes = document.querySelectorAll('section[id]');
 const linksNav = document.querySelectorAll('.nav-menu a');
 
@@ -197,11 +188,9 @@ function redimensionarCanvas(canvas) {
 redimensionarCanvas(canvasFE);
 window.addEventListener('resize', () => redimensionarCanvas(canvasFE));
 
-// Converte frequência (×10¹⁴ Hz) em cor visível
 function freqParaCor(f14) {
-  // f em Hz = f14 × 10¹⁴
   const f = f14 * 1e14;
-  const lambda = CONSTANTES.LUZ / f * 1e9; // nm
+  const lambda = CONSTANTES.LUZ / f * 1e9;
   if (lambda > 700) return '#ff0000';
   if (lambda > 620) return '#ff4500';
   if (lambda > 590) return '#ffa500';
@@ -209,7 +198,7 @@ function freqParaCor(f14) {
   if (lambda > 495) return '#00ff00';
   if (lambda > 450) return '#0000ff';
   if (lambda > 380) return '#8a2be2';
-  return '#9400d3'; // UV
+  return '#9400d3';
 }
 
 function criarFoton() {
@@ -228,36 +217,44 @@ function criarEletron(x, y, energia) {
   const ang = Math.random() * Math.PI * 2;
   const vel = 2 + energia * 0.5;
   return {
-    x: x,
-    y: y,
+    x: x, y: y,
     vx: Math.cos(ang) * vel,
     vy: Math.sin(ang) * vel,
-    vida: 60,
-    vivo: true
+    vida: 60, vivo: true
   };
 }
 
 function atualizarFotoeletrico() {
   ctxFE.clearRect(0, 0, canvasFE.width, canvasFE.height);
 
-  // Fundo - placa de metal
   const grad = ctxFE.createLinearGradient(0, 0, canvasFE.width, canvasFE.height);
-  grad.addColorStop(0, '#0c2461');
-  grad.addColorStop(1, '#1e3799');
+  grad.addColorStop(0, '#0a3d62');
+  grad.addColorStop(1, '#0652a8');
   ctxFE.fillStyle = grad;
   ctxFE.fillRect(0, 0, canvasFE.width, canvasFE.height);
 
-  // Placa metálica (alvo)
+  // Placa de silício (célula fotovoltaica)
   const placaX = canvasFE.width * 0.6;
-  ctxFE.fillStyle = '#636e72';
+  ctxFE.fillStyle = '#2d3436';
   ctxFE.fillRect(placaX, 50, 30, canvasFE.height - 100);
-  ctxFE.fillStyle = '#b2bec3';
+  ctxFE.fillStyle = '#636e72';
   ctxFE.fillRect(placaX + 5, 55, 20, canvasFE.height - 110);
 
-  // Label
+  // Junção P-N
+  ctxFE.strokeStyle = '#55efc4';
+  ctxFE.lineWidth = 2;
+  ctxFE.setLineDash([5, 5]);
+  ctxFE.beginPath();
+  ctxFE.moveTo(placaX + 15, 50);
+  ctxFE.lineTo(placaX + 15, canvasFE.height - 50);
+  ctxFE.stroke();
+  ctxFE.setLineDash([]);
+
   ctxFE.fillStyle = 'white';
-  ctxFE.font = 'bold 14px Poppins';
-  ctxFE.fillText('METAL', placaX - 5, 35);
+  ctxFE.font = 'bold 12px Poppins';
+  ctxFE.fillText('SILÍCIO', placaX - 5, 35);
+  ctxFE.fillText('P', placaX - 20, canvasFE.height / 2);
+  ctxFE.fillText('N', placaX + 40, canvasFE.height / 2);
 
   // Fonte de luz
   const freq = parseFloat(freqInput.value);
@@ -271,19 +268,16 @@ function atualizarFotoeletrico() {
   ctxFE.fill();
   ctxFE.shadowBlur = 0;
 
-  // Adicionar novos fótons
   const intensidade = parseInt(intInput.value);
   if (Math.random() < intensidade / 10) {
     fotons.push(criarFoton());
   }
 
-  // Atualizar fótons
   const funcaoTrabalho = parseFloat(materialInput.value);
   fotons.forEach(f => {
     if (!f.vivo) return;
     f.x += f.vx;
 
-    // Desenhar fóton
     ctxFE.fillStyle = f.cor;
     ctxFE.beginPath();
     ctxFE.arc(f.x, f.y, 5, 0, Math.PI * 2);
@@ -293,10 +287,8 @@ function atualizarFotoeletrico() {
     ctxFE.fill();
     ctxFE.shadowBlur = 0;
 
-    // Colisão com placa
     if (f.x >= placaX) {
       f.vivo = false;
-      // Calcular energia
       const E_foton_ev = CONSTANTES.PLANCK_EV * f.freq * 1e14;
       if (E_foton_ev > funcaoTrabalho) {
         const E_cin = E_foton_ev - funcaoTrabalho;
@@ -305,7 +297,6 @@ function atualizarFotoeletrico() {
     }
   });
 
-  // Atualizar elétrons
   eletrons.forEach(e => {
     if (!e.vivo) return;
     e.x += e.vx;
@@ -324,11 +315,9 @@ function atualizarFotoeletrico() {
     ctxFE.fillText('e⁻', e.x - 5, e.y - 8);
   });
 
-  // Limpar arrays
   fotons = fotons.filter(f => f.vivo);
   eletrons = eletrons.filter(e => e.vivo);
 
-  // Atualizar status
   const E_foton = CONSTANTES.PLANCK_EV * freq * 1e14;
   if (E_foton > funcaoTrabalho) {
     statusFE.textContent = '⚡ Elétrons ejetados!';
@@ -341,7 +330,6 @@ function atualizarFotoeletrico() {
   requestAnimationFrame(atualizarFotoeletrico);
 }
 
-// Atualizar valores mostrados
 freqInput.addEventListener('input', () => {
   freqValor.textContent = parseFloat(freqInput.value).toFixed(1) + ' × 10¹⁴ Hz';
   atualizarResultadoFE();
@@ -374,173 +362,154 @@ atualizarResultadoFE();
 atualizarFotoeletrico();
 
 // ==========================================
-// 7. SIMULADOR: CORPO NEGRO (CURVA DE PLANCK)
+// 7. SIMULADOR: PRODUÇÃO FOTOVOLTAICA AO LONGO DO DIA
 // ==========================================
 
-const canvasCN = document.getElementById('canvasCorpoNegro');
-const ctxCN = canvasCN.getContext('2d');
-const tempInput = document.getElementById('temperatura');
-const tempValor = document.getElementById('tempValor');
-const statusCN = document.getElementById('statusCorpoNegro');
-const resultadoCN = document.getElementById('resultadoCorpoNegro');
+const canvasProd = document.getElementById('canvasProducao');
+const ctxProd = canvasProd.getContext('2d');
+const potInput = document.getElementById('potenciaPlaca');
+const nubladoInput = document.getElementById('nublado');
+const horaInput = document.getElementById('hora');
+const potValor = document.getElementById('potValor');
+const horaValor = document.getElementById('horaValor');
+const statusProd = document.getElementById('statusProducao');
+const resultadoProd = document.getElementById('resultadoProducao');
 
-redimensionarCanvas(canvasCN);
-window.addEventListener('resize', () => redimensionarCanvas(canvasCN));
+redimensionarCanvas(canvasProd);
+window.addEventListener('resize', () => redimensionarCanvas(canvasProd));
 
-function planck(lambda_m, T) {
-  const h = CONSTANTES.PLANCK;
-  const c = CONSTANTES.LUZ;
-  const k = CONSTANTES.BOLTZMANN;
-  const num = 2 * h * c * c;
-  const den = Math.pow(lambda_m, 5) * (Math.exp((h * c) / (lambda_m * k * T)) - 1);
-  return num / den;
+function curvaSolar(hora) {
+  // Curva em forma de sino entre 6h e 18h
+  if (hora < 6 || hora > 18) return 0;
+  const pico = 12;
+  const desvio = 2.5;
+  return Math.exp(-Math.pow(hora - pico, 2) / (2 * desvio * desvio));
 }
 
-function desenharCorpoNegro() {
-  const T = parseFloat(tempInput.value);
-  const W = canvasCN.width;
-  const H = canvasCN.height;
+function desenharProducao() {
+  const potencia = parseFloat(potInput.value);
+  const fatorNublado = parseFloat(nubladoInput.value);
+  const horaAtual = parseFloat(horaInput.value);
 
-  ctxCN.clearRect(0, 0, W, H);
+  const W = canvasProd.width;
+  const H = canvasProd.height;
 
-  // Fundo
-  const grad = ctxCN.createLinearGradient(0, 0, W, H);
-  grad.addColorStop(0, '#0c2461');
-  grad.addColorStop(1, '#1e3799');
-  ctxCN.fillStyle = grad;
-  ctxCN.fillRect(0, 0, W, H);
+  ctxProd.clearRect(0, 0, W, H);
+
+  const grad = ctxProd.createLinearGradient(0, 0, W, H);
+  grad.addColorStop(0, '#0a3d62');
+  grad.addColorStop(1, '#0652a8');
+  ctxProd.fillStyle = grad;
+  ctxProd.fillRect(0, 0, W, H);
 
   // Eixos
-  ctxCN.strokeStyle = 'rgba(255,255,255,0.3)';
-  ctxCN.lineWidth = 2;
-  ctxCN.beginPath();
-  ctxCN.moveTo(60, H - 50);
-  ctxCN.lineTo(W - 20, H - 50);
-  ctxCN.moveTo(60, H - 50);
-  ctxCN.lineTo(60, 30);
-  ctxCN.stroke();
+  ctxProd.strokeStyle = 'rgba(255,255,255,0.4)';
+  ctxProd.lineWidth = 2;
+  ctxProd.beginPath();
+  ctxProd.moveTo(60, H - 50);
+  ctxProd.lineTo(W - 20, H - 50);
+  ctxProd.moveTo(60, H - 50);
+  ctxProd.lineTo(60, 30);
+  ctxProd.stroke();
 
-  // Labels
-  ctxCN.fillStyle = 'white';
-  ctxCN.font = 'bold 12px Poppins';
-  ctxCN.fillText('Intensidade', 10, 20);
-  ctxCN.fillText('λ (nm)', W - 60, H - 30);
+  ctxProd.fillStyle = 'white';
+  ctxProd.font = 'bold 12px Poppins';
+  ctxProd.fillText('Potência (W)', 10, 20);
+  ctxProd.fillText('Hora do dia', W - 100, H - 30);
 
-  // Calcular curva
-  const lambdaMin = 100e-9;
-  const lambdaMax = 3000e-9;
+  // Desenhar curva de produção
   const pontos = [];
-  let maxI = 0;
-
-  for (let i = 0; i <= 200; i++) {
-    const lambda = lambdaMin + (lambdaMax - lambdaMin) * (i / 200);
-    const I = planck(lambda, T);
-    pontos.push({ lambda, I });
-    if (I > maxI) maxI = I;
+  let maxP = 0;
+  for (let h = 6; h <= 18; h += 0.5) {
+    const p = potencia * curvaSolar(h) * fatorNublado;
+    pontos.push({ h, p });
+    if (p > maxP) maxP = p;
   }
 
-  // Desenhar curva preenchida
-  ctxCN.beginPath();
-  pontos.forEach((p, i) => {
-    const x = 60 + (W - 80) * (i / 200);
-    const y = (H - 50) - (H - 80) * (p.I / maxI);
-    if (i === 0) ctxCN.moveTo(x, y);
-    else ctxCN.lineTo(x, y);
+  // Preenchimento
+  ctxProd.beginPath();
+  pontos.forEach((pt, i) => {
+    const x = 60 + (W - 80) * ((pt.h - 6) / 12);
+    const y = (H - 50) - (H - 80) * (pt.p / (maxP || 1));
+    if (i === 0) ctxProd.moveTo(x, y);
+    else ctxProd.lineTo(x, y);
   });
-  ctxCN.strokeStyle = '#fdcb6e';
-  ctxCN.lineWidth = 3;
-  ctxCN.stroke();
+  ctxProd.strokeStyle = '#fdcb6e';
+  ctxProd.lineWidth = 3;
+  ctxProd.stroke();
 
-  // Preencher
-  ctxCN.lineTo(W - 20, H - 50);
-  ctxCN.lineTo(60, H - 50);
-  ctxCN.closePath();
-  const gradCurva = ctxCN.createLinearGradient(0, 30, 0, H - 50);
+  ctxProd.lineTo(60 + (W - 80), H - 50);
+  ctxProd.lineTo(60, H - 50);
+  ctxProd.closePath();
+  const gradCurva = ctxProd.createLinearGradient(0, 30, 0, H - 50);
   gradCurva.addColorStop(0, 'rgba(253, 203, 110, 0.6)');
   gradCurva.addColorStop(1, 'rgba(253, 203, 110, 0.05)');
-  ctxCN.fillStyle = gradCurva;
-  ctxCN.fill();
+  ctxProd.fillStyle = gradCurva;
+  ctxProd.fill();
 
-  // Marcar pico (Wien)
-  const lambdaPico = CONSTANTES.WIEN / T;
-  const idxPico = Math.round(((lambdaPico - lambdaMin) / (lambdaMax - lambdaMin)) * 200);
-  if (idxPico >= 0 && idxPico <= 200) {
-    const xPico = 60 + (W - 80) * (idxPico / 200);
-    const yPico = (H - 50) - (H - 80) * (pontos[idxPico].I / maxI);
-    ctxCN.strokeStyle = '#ff7675';
-    ctxCN.setLineDash([5, 5]);
-    ctxCN.beginPath();
-    ctxCN.moveTo(xPico, H - 50);
-    ctxCN.lineTo(xPico, yPico);
-    ctxCN.stroke();
-    ctxCN.setLineDash([]);
-
-    ctxCN.fillStyle = '#ff7675';
-    ctxCN.beginPath();
-    ctxCN.arc(xPico, yPico, 6, 0, Math.PI * 2);
-    ctxCN.fill();
-
-    ctxCN.fillStyle = 'white';
-    ctxCN.font = 'bold 12px Poppins';
-    ctxCN.fillText(`λ máx = ${(lambdaPico * 1e9).toFixed(0)} nm`, xPico + 10, yPico - 10);
+  // Marcadores de hora
+  ctxProd.fillStyle = 'white';
+  ctxProd.font = '10px Poppins';
+  for (let h = 6; h <= 18; h += 2) {
+    const x = 60 + (W - 80) * ((h - 6) / 12);
+    ctxProd.fillText(h + 'h', x - 8, H - 30);
   }
 
-  // Escala de cores do espectro visível
-  const visMin = 380e-9;
-  const visMax = 700e-9;
-  const x1 = 60 + (W - 80) * ((visMin - lambdaMin) / (lambdaMax - lambdaMin));
-  const x2 = 60 + (W - 80) * ((visMax - lambdaMin) / (lambdaMax - lambdaMin));
-  const gradVis = ctxCN.createLinearGradient(x1, 0, x2, 0);
-  gradVis.addColorStop(0, '#8a2be2');
-  gradVis.addColorStop(0.2, '#0000ff');
-  gradVis.addColorStop(0.4, '#00ff00');
-  gradVis.addColorStop(0.6, '#ffff00');
-  gradVis.addColorStop(0.8, '#ffa500');
-  gradVis.addColorStop(1, '#ff0000');
-  ctxCN.fillStyle = gradVis;
-  ctxCN.fillRect(x1, H - 40, x2 - x1, 15);
-  ctxCN.fillStyle = 'white';
-  ctxCN.font = '10px Poppins';
-  ctxCN.fillText('UV', x1 - 20, H - 30);
-  ctxCN.fillText('IV', x2 + 5, H - 30);
-  ctxCN.fillText('Visível', (x1 + x2) / 2 - 25, H - 30);
+  // Linha da hora atual
+  const xAtual = 60 + (W - 80) * ((horaAtual - 6) / 12);
+  const pAtual = potencia * curvaSolar(horaAtual) * fatorNublado;
+  const yAtual = (H - 50) - (H - 80) * (pAtual / (maxP || 1));
 
-  // Atualizar status
-  const lambdaPicoNm = (lambdaPico * 1e9).toFixed(0);
-  let corPico = 'infravermelho';
-  if (lambdaPico < 380e-9) corPico = 'ultravioleta';
-  else if (lambdaPico < 450e-9) corPico = 'violeta';
-  else if (lambdaPico < 495e-9) corPico = 'azul';
-  else if (lambdaPico < 570e-9) corPico = 'verde';
-  else if (lambdaPico < 590e-9) corPico = 'amarelo';
-  else if (lambdaPico < 620e-9) corPico = 'laranja';
-  else if (lambdaPico < 700e-9) corPico = 'vermelho';
+  ctxProd.strokeStyle = '#ff7675';
+  ctxProd.setLineDash([5, 5]);
+  ctxProd.beginPath();
+  ctxProd.moveTo(xAtual, H - 50);
+  ctxProd.lineTo(xAtual, yAtual);
+  ctxProd.stroke();
+  ctxProd.setLineDash([]);
 
-  statusCN.textContent = `🌡️ ${T} K`;
-  statusCN.style.color = '#fdcb6e';
+  ctxProd.fillStyle = '#ff7675';
+  ctxProd.beginPath();
+  ctxProd.arc(xAtual, yAtual, 7, 0, Math.PI * 2);
+  ctxProd.fill();
 
-  resultadoCN.innerHTML = `
-    <strong>Temperatura:</strong> ${T} K |
-    <strong>Pico de emissão:</strong> ${lambdaPicoNm} nm (${corPico})<br>
-    ${T >= 5500 && T <= 6200 ? '☀️ Similar ao Sol! Coleta ótima de energia visível.' : ''}
-    ${T < 1000 ? '🔥 Similar a um coletor solar aquecido.' : ''}
+  ctxProd.fillStyle = 'white';
+  ctxProd.font = 'bold 12px Poppins';
+  ctxProd.fillText(`${horaAtual.toFixed(1)}h → ${pAtual.toFixed(0)} W`, xAtual + 10, yAtual - 10);
+
+  statusProd.textContent = `☀️ ${potencia} W | ${fatorNublado * 100}% de irradiância`;
+  statusProd.style.color = '#fdcb6e';
+
+  // Energia total do dia (integração simples)
+  let energiaDia = 0;
+  for (let h = 6; h <= 18; h += 0.5) {
+    energiaDia += potencia * curvaSolar(h) * fatorNublado * 0.5; // 0.5h em kWh
+  }
+  energiaDia /= 1000;
+
+  resultadoProd.innerHTML = `
+    <strong>Potência agora:</strong> ${pAtual.toFixed(0)} W |
+    <strong>Energia total do dia:</strong> ${energiaDia.toFixed(2)} kWh<br>
+    ${horaAtual >= 10 && horaAtual <= 14 ? '🌞 Horário de pico solar — máxima produção!' : ''}
+    ${fatorNublado < 0.5 ? '☁️ Produção reduzida pelas nuvens.' : ''}
   `;
 }
 
-tempInput.addEventListener('input', () => {
-  const T = parseFloat(tempInput.value);
-  let label = T + ' K';
-  if (T >= 5500 && T <= 6200) label += ' (Sol)';
-  else if (T >= 2800 && T <= 3200) label += ' (Lâmpada)';
-  else if (T < 500) label += ' (Corpo morno)';
-  tempValor.textContent = label;
-  desenharCorpoNegro();
+potInput.addEventListener('input', () => {
+  potValor.textContent = potInput.value + ' W';
+  desenharProducao();
+});
+nubladoInput.addEventListener('change', desenharProducao);
+horaInput.addEventListener('input', () => {
+  const h = parseFloat(horaInput.value);
+  horaValor.textContent = (h < 10 ? '0' : '') + Math.floor(h) + ':' + (h % 1 === 0 ? '00' : '30');
+  desenharProducao();
 });
 
-desenharCorpoNegro();
+desenharProducao();
 
 // ==========================================
-// 8. CALCULADORA DE ENERGIA SOLAR
+// 8. CALCULADORA FOTOVOLTAICA
 // ==========================================
 
 const formCalc = document.getElementById('formCalculadora');
@@ -551,31 +520,33 @@ formCalc.addEventListener('submit', (e) => {
   const Ti = parseFloat(document.getElementById('tempInicial').value);
   const Tf = parseFloat(document.getElementById('tempFinal').value);
   const irr = parseFloat(document.getElementById('irradiacao').value);
-  const eff = parseFloat(document.getElementById('eficiencia').value) / 100;
+  const potPlaca = parseFloat(document.getElementById('potenciaPlacaCalc').value);
 
-  // Energia para aquecer (J)
-  const massa = V * CONSTANTES.DENSIDADE_AGUA;
+  const massa = V * 1; // kg
   const deltaT = Tf - Ti;
   const Q = massa * CONSTANTES.CALOR_ESP_AGUA * deltaT;
   const Q_kWh = Q / 3.6e6;
 
-  // Energia diária necessária considerando perdas (20%)
+  // Energia diária com perdas (20%)
   const Q_diario = Q_kWh * 1.2;
 
-  // Área de coletores térmicos (m²)
-  const area_termica = Q_diario / (irr * eff);
+  // Produção por placa por dia (5h de sol pleno equivalente)
+  const prodPlaca = (potPlaca / 1000) * 5; // kWh/dia
 
-  // Placas fotovoltaicas (350W cada, 5h de sol pleno)
-  const energia_por_placa = 0.35 * 5; // kWh/dia
-  const num_placas = Math.ceil(Q_diario / energia_por_placa);
+  // Número de placas
+  const numPlacas = Math.ceil(Q_diario / prodPlaca);
 
-  // Economia mensal (R$ 0,80/kWh)
+  // Área estimada (cada placa ~1,7 m²)
+  const areaTotal = numPlacas * 1.7;
+
+  // Economia mensal
   const economia = Q_diario * 30 * 0.80;
 
-  // Exibir resultados
-  document.getElementById('energiaNecessaria').textContent = Q_diario.toFixed(1) + ' kWh/dia';
-  document.getElementById('areaColetores').textContent = area_termica.toFixed(1) + ' m²';
-  document.getElementById('placasFV').textContent = num_placas + ' placas';
+  document.getElementById('energiaNecessaria').textContent = Q_kWh.toFixed(1) + ' kWh';
+  document.getElementById('energiaDiaria').textContent = Q_diario.toFixed(1) + ' kWh';
+  document.getElementById('producaoPlaca').textContent = prodPlaca.toFixed(2) + ' kWh/dia';
+  document.getElementById('placasFV').textContent = numPlacas + ' placas';
+  document.getElementById('areaTotal').textContent = areaTotal.toFixed(1) + ' m²';
   document.getElementById('economia').textContent = 'R$ ' + economia.toFixed(2);
 
   const resDiv = document.getElementById('resultadoCalculadora');
@@ -584,7 +555,7 @@ formCalc.addEventListener('submit', (e) => {
 });
 
 // ==========================================
-// 9. PREFERÊNCIAS DO USUÁRIO (localStorage)
+// 9. PREFERÊNCIAS DO USUÁRIO
 // ==========================================
 
 function salvarPreferencias() {
@@ -615,10 +586,9 @@ window.addEventListener('beforeunload', salvarPreferencias);
 carregarPreferencias();
 
 // ==========================================
-// 10. ANIMAÇÕES SUAVES E INTERAÇÕES
+// 10. ANIMAÇÕES E INTERAÇÕES
 // ==========================================
 
-// Efeito parallax no hero
 window.addEventListener('scroll', () => {
   const hero = document.querySelector('.hero');
   if (hero) {
@@ -627,10 +597,9 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Tooltips em cards
 document.querySelectorAll('.card, .fisica-card').forEach(card => {
   card.setAttribute('tabindex', '0');
 });
 
-console.log('%c☀️🌊 Projeto Integrador CEP', 'font-size: 24px; color: #0984e3; font-weight: bold;');
-console.log('%cDesenvolvido por Natalia, Nicoli, Melissa e Rafaela 💙💚', 'font-size: 14px; color: #00b894;');
+console.log('%c☀️⚡ Projeto Integrador CEP - Fotovoltaico', 'font-size: 24px; color: #0a3d62; font-weight: bold;');
+console.log('%cDesenvolvido por Natalia, Nicoli, Melissa e Rafaela 💙💚', 'font-size: 14px; color: #006266;');
