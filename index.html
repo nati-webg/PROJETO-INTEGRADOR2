@@ -1,193 +1,415 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoSolar Dashboard - Tecnociência e Robótica Integrada</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projeto Integrador CEP - Aquecimento solar da piscina da escola com Física Moderna, efeito fotoelétrico e robótica.">
+  <meta name="keywords" content="energia solar, efeito fotoelétrico, corpo negro, piscina, robótica, educação">
+  <meta name="author" content="Natalia, Nicoli, Melissa, Rafaela">
+  <title>☀️🌊 Aquecimento Solar da Piscina — Projeto Integrador CEP</title>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=OpenDyslexic&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- VLibras - Acessibilidade em Libras -->
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 </head>
 <body>
 
-    <!-- [CHECKLIST - CRITÉRIO 5] Script Oficial e Funcional do Widget VLibras -->
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
+  <!-- Skip Link (Acessibilidade) -->
+  <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- Barra de Acessibilidade -->
+  <aside class="accessibility-bar" aria-label="Ferramentas de acessibilidade">
+    <button id="btnAumentarFonte" aria-label="Aumentar tamanho da fonte" title="Aumentar fonte">A+</button>
+    <button id="btnDiminuirFonte" aria-label="Diminuir tamanho da fonte" title="Diminuir fonte">A-</button>
+    <button id="btnAltoContraste" aria-label="Ativar alto contraste" title="Alto contraste">◐</button>
+    <button id="btnDislexia" aria-label="Ativar fonte para dislexia" title="Fonte para dislexia">D</button>
+    <button id="btnLeitor" aria-label="Ativar leitor de texto" title="Leitor de texto">🔊</button>
+  </aside>
+
+  <!-- HEADER -->
+  <header role="banner">
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-icon" aria-hidden="true">☀️</div>
+        <span>Solar Piscina CEP</span>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+
+      <nav class="nav-menu" id="navMenu" role="navigation" aria-label="Menu principal">
+        <a href="#inicio" class="active">Início</a>
+        <a href="#fundamentos">Fundamentos</a>
+        <a href="#fisica-moderna">Física Moderna</a>
+        <a href="#comparativo">Térmico vs Fotovoltaico</a>
+        <a href="#simuladores">Simuladores</a>
+        <a href="#calculadora">Calculadora</a>
+        <a href="#robotica">Robótica</a>
+        <a href="#equipe">Equipe</a>
+      </nav>
     </div>
-    <script src="https://vlibras.gov.br"></script>
-    <script>
-        new window.VLibras.Plugin('https://vlibras.gov.br');
-    </script>
+  </header>
 
-    <!-- [CHECKLIST - CRITÉRIO 2 e 3] Barra de Acessibilidade Superior -->
-    <div class="top-accessibility-bar">
-        <button id="toggle-contrast" class="btn-acc" aria-label="Alternar Alto Contraste">Compartilhar 🌓 Alto Contraste</button>
-        <button id="toggle-dyslexia" class="btn-acc" aria-label="Alternar Fonte de Leitura">📖 Fonte Leitura</button>
-    </div>
+  <!-- MAIN -->
+  <main id="main">
 
-    <!-- Cabeçalho e Menu Principal -->
-    <header id="top">
-        <div class="header-container">
-            <div class="logo">☀️ EcoSolar <span>Dashboard</span> 💧</div>
-            <nav aria-label="Navegação Principal">
-                <ul class="nav-links">
-                    <li><a href="#fisi-quantica">Física & Quântica</a></li>
-                    <li><a href="#analise-clima">Análise Climática</a></li>
-                    <li><a href="#automacao-bomba">Robótica & Automação</a></li>
-                    <li><a href="#simulador-painel">Simulador</a></li>
-                    <li><a href="#mapasite">Mapa do Site</a></li>
-                </ul>
-            </nav>
+    <!-- HERO -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <h1 id="hero-title">É possível aquecer a piscina da escola com energia solar?</h1>
+        <p>Descubra como a Física Moderna, o efeito fotoelétrico e a robótica podem transformar a luz do sol em calor e eletricidade para a nossa piscina.</p>
+        <div class="hero-buttons">
+          <a href="#simuladores" class="btn btn-primary">🧪 Ver Simuladores</a>
+          <a href="#fundamentos" class="btn btn-secondary">📚 Aprender Física</a>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <!-- Layout Principal Estilo Dashboard Avançado -->
-    <main class="dashboard-layout">
-        
-        <!-- CARD PRINCIPAL 1: Fundamentos da Física -->
-        <section id="fisi-quantica" class="card-main card-green-light">
-            <div class="card-header">
-                <span class="badge">Física Moderna</span>
-                <h2>Radiação de Corpo Negro & Luz Solar</h2>
-            </div>
-            <div class="card-body">
-                <p>O Sol atua como um <strong>corpo negro</strong> perfeito, emitindo radiação baseada em sua temperatura (~5800 K). Essa energia viaja quantizada em pacotes discretos chamados <strong>fótons</strong>.</p>
-                <div class="visual-spectrum" aria-label="Gráfico representativo do espectro visível">
-                    <div class="spectrum-bar"></div>
-                    <div class="spectrum-labels">
-                        <small>Ultravioleta (UV)</small>
-                        <small>Luz Visível</small>
-                        <small>Infravermelho (IV)</small>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- FUNDAMENTOS -->
+    <section id="fundamentos" class="fade-in" aria-labelledby="fund-title">
+      <div class="section-title">
+        <h2 id="fund-title">🌞 Fundamentos da Energia Solar</h2>
+        <p>Entenda como o Sol aquece a Terra e como podemos aproveitar essa energia.</p>
+      </div>
 
-        <!-- CARD PRINCIPAL 2: Mecanismo Quântico -->
-        <section class="card-main card-green-medium">
-            <div class="card-header">
-                <span class="badge">Mecanismo Quântico</span>
-                <h2>O Efeito Fotoelétrico no Silício</h2>
-            </div>
-            <div class="card-body">
-                <p>A conversão da luz solar em eletricidade dentro das células fotovoltaicas ocorre de forma puramente física através de etapas atômicas delimitadas:</p>
-                <div class="step-container">
-                    <div class="step-item">
-                        <div class="step-num">1</div>
-                        <div><strong>Estrutura Semicondutora:</strong> Composta por camadas de silício dopado tipo P e tipo N.</div>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-num">2</div>
-                        <div><strong>Função Trabalho:</strong> O fóton solar colide e precisa superar a energia de ligação do material.</div>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-num">3</div>
-                        <div><strong>Salto de Banda:</strong> Elétrons saltam da <em>banda de valência</em> para a <em>banda de condução</em>, gerando a corrente contínua.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <div class="cards-grid">
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🌊</div>
+          <h3>Ondas Eletromagnéticas</h3>
+          <p>A luz solar é composta por ondas eletromagnéticas que viajam pelo espaço. O espectro inclui ultravioleta, visível e infravermelho — cada um com um papel no aquecimento.</p>
+        </article>
 
-        <!-- CARD PRINCIPAL 3: Análise Comparativa Climática (Largura Total) -->
-        <section id="analise-clima" class="card-main card-green-dark full-width">
-            <div class="card-header">
-                <span class="badge">Análise Comparativa</span>
-                <h2>Desempenho das Placas Fotovoltaicas: Variação e Eficiência</h2>
-            </div>
-            <div class="card-body split-grid-2">
-                <div>
-                    <p>A produção de energia varia ao longo do dia devido ao ângulo de inclinação do Sol e às interferências atmosféricas climáticas:</p>
-                    <ul class="bullet-list">
-                        <li>☀️ <strong>Radiação Direta:</strong> Predomina em dias ensolarados, fornecendo fótons de alta energia diretamente sobre os painéis.</li>
-                        <li>☁️ <strong>Radiação Difusa:</strong> Ocorre em dias nublados, onde as nuvens espalham a luz solar, reduzindo drasticamente o rendimento quântico.</li>
-                    </ul>
-                </div>
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Cenário do Dia</th>
-                                <th>Tipo de Luz</th>
-                                <th>Eficiência Média</th>
-                                <th>Impacto Térmico</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Ensolarado (Pico)</strong></td>
-                                <td>Direta</td>
-                                <td>18% a 22%</td>
-                                <td>Rendimento máximo de aquecimento.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Céu Nublado</strong></td>
-                                <td>Difusa</td>
-                                <td>3% a 7%</td>
-                                <td>Aquecimento entra em standby econômico.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🔥</div>
+          <h3>Radiação do Corpo Negro</h3>
+          <p>Todo corpo emite radiação conforme sua temperatura. O Sol (≈5800K) emite pico no visível. O coletor solar se comporta como corpo negro, absorvendo quase toda a radiação.</p>
+        </article>
 
-        <!-- CARD PRINCIPAL 4: Engenharia, Robótica e Destino de Energia -->
-        <section id="automacao-bomba" class="card-main card-green-medium">
-            <div class="card-header">
-                <span class="badge">Automação ESP32/Arduino</span>
-                <h2>Robótica Aplicada ao Aquecimento da Piscina</h2>
-            </div>
-            <div class="card-body">
-                <p>Como a eletricidade gerada é aproveitada? A corrente alimenta um circuito lógico inteligente que monitora o ambiente e liga os atuadores:</p>
-                <div class="mini-grid-sensors">
-                    <div class="sensor-box">
-                        <div class="sensor-icon">🟢</div>
-                        <div>
-                            <h4>Sensor LDR</h4>
-                            <p>Mede a luminosidade local e prevê a queda de tensão nas placas.</p>
-                        </div>
-                    </div>
-                    <div class="sensor-box">
-                        <div class="sensor-icon">🔵</div>
-                        <div>
-                            <h4>Sensor DS18B20</h4>
-                            <p>Termômetro blindado inserido nos tubos para leitura da temperatura da água.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="actuator-box">
-                    ⚙️ <strong>Destino da Energia:</strong> Se houver sol e a água estiver fria, o microcontrolador aciona uma <strong>motobomba</strong> e liga o <strong>trocador de calor</strong> (bomba de calor), transferindo a energia obtida das placas para a água da piscina.
-                </div>
-            </div>
-        </section>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">⚡</div>
+          <h3>Efeito Fotoelétrico</h3>
+          <p>Fótons com energia suficiente (E = h·f) arrancam elétrons de um material. É esse fenômeno que explica o funcionamento das células fotovoltaicas!</p>
+        </article>
 
-        <!-- CARD PRINCIPAL 5: Vídeo Integrado Interativo -->
-        <section class="card-main card-green-light">
-            <div class="card-header">
-                <span class="badge">Mídia de Apoio</span>
-                <h2>Vídeo Explicativo do Projeto</h2>
-            </div>
-            <div class="card-body video-container-box">
-                <div class="video-mock-player" aria-label="Reprodutor de vídeo explicativo do projeto">
-                    <div class="video-overlay">
-                        <span>▶️ Assistir Apresentação do Projeto</span>
-                        <small>Tradução simultânea suprida via VLibras</small>
-                    </div>
-                </div>
-                <p class="video-caption">Vídeo demonstrando as conexões físicas entre o Efeito Fotoelétrico do silício dopado e o acionamento robótico no encanamento térmico.</p>
-            </div>
-        </section>
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🏊</div>
+          <h3>Perda de Calor Noturna</h3>
+          <p>A piscina emite radiação infravermelha à noite, perdendo calor. Por isso a capa térmica é essencial — ela reflete a radiação de volta para a água.</p>
+        </article>
+      </div>
+    </section>
 
-        <!-- CARD PRINCIPAL 6: Painel Computacional Interativo (Largura Total) -->
-        <section id="simulador-painel" class="card-main card-green-accent full-width">
-            <div class="card-header">
-                <span class="badge">Simulador Computacional</span>
-                <h2>Painel de Monitoramento Digital do Sistema</h2>
-            </div>
-            <div class="card-body dynamic-simulator-layout">
-                <div class="simulator-controls">
-                    <h3>Controles dos Sensores</h3>
-                    <p class="sub-instructions">Arraste os controles abaixo usando o mouse ou os comandos de foco de teclado (TAB):</p>
-                    
-                    <div class="control-block">
+    <!-- FÍSICA MODERNA -->
+    <section id="fisica-moderna" class="fade-in" aria-labelledby="fm-title">
+      <div class="section-title">
+        <h2 id="fm-title">⚛️ Física Moderna em Ação</h2>
+        <p>Como Einstein e Planck explicam o funcionamento das placas solares.</p>
+      </div>
+
+      <div class="fisica-grid">
+        <article class="fisica-card">
+          <h3>🔬 A Célula Fotovoltaica</h3>
+          <p>Feita de <strong>silício</strong> (semicondutor), possui uma junção P-N. Quando fótons atingem o material, arrancam elétrons, gerando corrente elétrica.</p>
+          <div class="formula">E<sub>fóton</sub> = h · f</div>
+          <p><strong>h</strong> = 6,626 × 10⁻³⁴ J·s (constante de Planck)<br>
+          <strong>f</strong> = frequência da luz</p>
+        </article>
+
+        <article class="fisica-card">
+          <h3>💡 Efeito Fotoelétrico</h3>
+          <p>Descoberto por Hertz e explicado por Einstein (Nobel 1921). Só funciona se a energia do fóton for maior que a <strong>função trabalho</strong> do material.</p>
+          <div class="formula">E<sub>cinética</sub> = h·f − φ</div>
+          <p><strong>φ</strong> = função trabalho do silício (≈ 4,6 eV)</p>
+        </article>
+
+        <article class="fisica-card">
+          <h3>🌡️ Lei de Planck (Corpo Negro)</h3>
+          <p>Descreve a distribuição espectral da radiação emitida por um corpo negro. Quanto maior a temperatura, menor o comprimento de onda de pico.</p>
+          <div class="formula">λ<sub>máx</sub> · T = 2,898 × 10⁻³ m·K</div>
+          <p>Lei do deslocamento de Wien</p>
+        </article>
+
+        <article class="fisica-card">
+          <h3>🔋 Conversão de Energia</h3>
+          <p>A eficiência típica de uma placa fotovoltaica é de <strong>15% a 22%</strong>. A energia elétrica gerada pode alimentar bombas de calor para aquecer a piscina.</p>
+          <div class="formula">η = P<sub>elétrica</sub> / P<sub>solar</sub></div>
+          <p>Onde η é a eficiência do sistema.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- COMPARATIVO -->
+    <section id="comparativo" class="fade-in" aria-labelledby="comp-title">
+      <div class="section-title">
+        <h2 id="comp-title">⚖️ Térmico vs. Fotovoltaico</h2>
+        <p>Entenda as diferenças entre os dois sistemas de aproveitamento da energia solar.</p>
+      </div>
+
+      <div class="comparativo">
+        <article class="coluna-comparativo termico">
+          <h3>🔥 Aquecimento Térmico</h3>
+          <p><strong>Como funciona:</strong> Coletores absorvem radiação visível/IV e aquecem água diretamente.</p>
+          <ul>
+            <li>Alta eficiência (até 80%)</li>
+            <li>Aquece água diretamente</li>
+            <li>Mais barato</li>
+            <li>Ideal para piscinas</li>
+            <li>Funciona mesmo em dias nublados</li>
+            <li>Não gera eletricidade</li>
+            <li>Requer espaço no telhado</li>
+          </ul>
+        </article>
+
+        <article class="coluna-comparativo fotovoltaico">
+          <h3>⚡ Fotovoltaico</h3>
+          <p><strong>Como funciona:</strong> Placas convertem luz em eletricidade via efeito fotoelétrico.</p>
+          <ul>
+            <li>Eficiência de 15-22%</li>
+            <li>Gera eletricidade versátil</li>
+            <li>Alimenta bombas de calor</li>
+            <li>Pode vender energia à rede</li>
+            <li>Vida útil de 25+ anos</li>
+            <li>Mais caro inicialmente</li>
+            <li>Produz menos em dias nublados</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- SIMULADORES -->
+    <section id="simuladores" class="fade-in" aria-labelledby="sim-title">
+      <div class="section-title">
+        <h2 id="sim-title">🧪 Simuladores Interativos</h2>
+        <p>Experimente os fenômenos físicos em tempo real!</p>
+      </div>
+
+      <!-- Simulador 1: Efeito Fotoelétrico -->
+      <div class="simulador-container">
+        <div class="simulador-header">
+          <h3>⚡ Simulador do Efeito Fotoelétrico</h3>
+          <span class="valor-display" id="statusFotoeletrico">Aguardando...</span>
+        </div>
+        <canvas id="canvasFotoeletrico" class="simulador-canvas" aria-label="Simulação do efeito fotoelétrico"></canvas>
+        <div class="simulador-controles">
+          <div class="controle-grupo">
+            <label for="frequencia">Frequência da luz (×10¹⁴ Hz)</label>
+            <input type="range" id="frequencia" min="3" max="10" step="0.1" value="5" aria-describedby="freqValor">
+            <span class="valor-display" id="freqValor">5.0 × 10¹⁴ Hz</span>
+          </div>
+          <div class="controle-grupo">
+            <label for="intensidade">Intensidade da luz</label>
+            <input type="range" id="intensidade" min="1" max="10" step="1" value="5">
+            <span class="valor-display" id="intValor">5 fótons/s</span>
+          </div>
+          <div class="controle-grupo">
+            <label for="material">Material</label>
+            <select id="material">
+              <option value="4.6">Silício (φ = 4,6 eV)</option>
+              <option value="2.3">Sódio (φ = 2,3 eV)</option>
+              <option value="4.7">Cobre (φ = 4,7 eV)</option>
+            </select>
+          </div>
+        </div>
+        <div class="simulador-resultado" id="resultadoFotoeletrico">
+          Ajuste os controles para ver o efeito!
+        </div>
+      </div>
+
+      <!-- Simulador 2: Corpo Negro -->
+      <div class="simulador-container">
+        <div class="simulador-header">
+          <h3>🌡️ Simulador do Corpo Negro</h3>
+          <span class="valor-display" id="statusCorpoNegro">Aguardando...</span>
+        </div>
+        <canvas id="canvasCorpoNegro" class="simulador-canvas" aria-label="Curva de radiação do corpo negro"></canvas>
+        <div class="simulador-controles">
+          <div class="controle-grupo">
+            <label for="temperatura">Temperatura (K)</label>
+            <input type="range" id="temperatura" min="2000" max="10000" step="100" value="5800">
+            <span class="valor-display" id="tempValor">5800 K (Sol)</span>
+          </div>
+        </div>
+        <div class="simulador-resultado" id="resultadoCorpoNegro">
+          Ajuste a temperatura para ver a curva de Planck!
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULADORA -->
+    <section id="calculadora" class="fade-in" aria-labelledby="calc-title">
+      <div class="section-title">
+        <h2 id="calc-title">🧮 Calculadora de Energia Solar</h2>
+        <p>Dimensione o sistema para aquecer a piscina da escola.</p>
+      </div>
+
+      <div class="calculadora">
+        <form id="formCalculadora" aria-label="Calculadora de dimensionamento solar">
+          <div class="form-grupo">
+            <label for="volume">Volume da piscina (litros)</label>
+            <input type="number" id="volume" value="50000" min="1000" step="1000" required>
+          </div>
+          <div class="form-grupo">
+            <label for="tempInicial">Temperatura inicial da água (°C)</label>
+            <input type="number" id="tempInicial" value="20" min="5" max="40" step="0.5" required>
+          </div>
+          <div class="form-grupo">
+            <label for="tempFinal">Temperatura desejada (°C)</label>
+            <input type="number" id="tempFinal" value="28" min="10" max="40" step="0.5" required>
+          </div>
+          <div class="form-grupo">
+            <label for="irradiacao">Irradiação solar média (kWh/m²/dia)</label>
+            <input type="number" id="irradiacao" value="5" min="2" max="8" step="0.1" required>
+          </div>
+          <div class="form-grupo">
+            <label for="eficiencia">Eficiência do sistema (%)</label>
+            <input type="number" id="eficiencia" value="70" min="10" max="95" step="1" required>
+          </div>
+          <button type="submit" class="btn btn-primary">🔍 Calcular</button>
+        </form>
+
+        <div class="resultado-calculadora" id="resultadoCalculadora" hidden>
+          <h4>📊 Resultado do Dimensionamento</h4>
+          <div class="resultado-item">
+            <span>Energia necessária:</span>
+            <span id="energiaNecessaria">—</span>
+          </div>
+          <div class="resultado-item">
+            <span>Área de coletores:</span>
+            <span id="areaColetores">—</span>
+          </div>
+          <div class="resultado-item">
+            <span>Placas fotovoltaicas (350W):</span>
+            <span id="placasFV">—</span>
+          </div>
+          <div class="resultado-item">
+            <span>Economia mensal estimada:</span>
+            <span id="economia">—</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROBÓTICA -->
+    <section id="robotica" class="fade-in" aria-labelledby="rob-title">
+      <div class="section-title">
+        <h2 id="rob-title">🤖 Robótica e Automação</h2>
+        <p>Sensores inteligentes para monitorar e automatizar a piscina.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🌡️</div>
+          <h3>Sensor de Temperatura</h3>
+          <p><strong>DS18B20</strong> monitora a temperatura da água em tempo real. Aciona a bomba de calor quando necessário.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">💡</div>
+          <h3>Sensor de Luminosidade</h3>
+          <p><strong>LDR / BH1750</strong> mede a intensidade solar. Otimiza o uso dos coletores e painéis.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">💧</div>
+          <h3>Sensor de Nível</h3>
+          <p><strong>Ultrassônico HC-SR04</strong> controla o nível da água, acionando a bomba de reposição.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">🧪</div>
+          <h3>Sensor de pH</h3>
+          <p>Monitora a qualidade da água e aciona dosadores automáticos de cloro.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- EQUIPE -->
+    <section id="equipe" class="fade-in" aria-labelledby="eq-title">
+      <div class="section-title">
+        <h2 id="eq-title">💚 Nossa Equipe</h2>
+        <p>Conheça as alunas que desenvolveram este projeto.</p>
+      </div>
+
+      <div class="equipe-grid">
+        <article class="membro">
+          <div class="avatar" aria-hidden="true">N</div>
+          <h4>Natalia</h4>
+          <p>Desenvolvimento Front-end & Acessibilidade</p>
+        </article>
+        <article class="membro">
+          <div class="avatar" aria-hidden="true">Ni</div>
+          <h4>Nicoli</h4>
+          <p>Conteúdo Científico (Física Moderna)</p>
+        </article>
+        <article class="membro">
+          <div class="avatar" aria-hidden="true">M</div>
+          <h4>Melissa</h4>
+          <p>Design, UX/UI & Identidade Visual</p>
+        </article>
+        <article class="membro">
+          <div class="avatar" aria-hidden="true">R</div>
+          <h4>Rafaela</h4>
+          <p>Simuladores Interativos & Robótica</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>☀️🌊 Solar Piscina CEP</h4>
+        <p>Projeto Integrador do 3º Trimestre — integrando Programação, Tecnociência e Robótica.</p>
+      </div>
+      <div class="footer-col">
+        <h4>🔗 Navegação</h4>
+        <ul>
+          <li><a href="#fundamentos">Fundamentos</a></li>
+          <li><a href="#fisica-moderna">Física Moderna</a></li>
+          <li><a href="#simuladores">Simuladores</a></li>
+          <li><a href="#calculadora">Calculadora</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>♿ Acessibilidade</h4>
+        <ul>
+          <li><a href="#" onclick="document.getElementById('btnAltoContraste').click();return false;">Alto Contraste</a></li>
+          <li><a href="#" onclick="document.getElementById('btnDislexia').click();return false;">Fonte para Dislexia</a></li>
+          <li><a href="#" onclick="document.getElementById('btnAumentarFonte').click();return false;">Aumentar Fonte</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>📚 Referências</h4>
+        <ul>
+          <li>Einstein, A. (1905). Efeito Fotoelétrico</li>
+          <li>Planck, M. (1900). Radiação do Corpo Negro</li>
+          <li>INMETRO — Energia Solar</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>💙💚 Feito com amor por <strong>Natalia, Nicoli, Melissa e Rafaela</strong> — CEP 2026</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
+  <!-- Inicialização VLibras -->
+  <script>
+    window.addEventListener('load', () => {
+      new window.VLibras.Widget('https://vlibras.gov.br/app');
+    });
+  </script>
+
+</body>
+</html>
