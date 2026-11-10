@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Projeto Integrador CEP - Aquecimento solar da piscina da escola com Física Moderna, efeito fotoelétrico e robótica.">
-  <meta name="keywords" content="energia solar, efeito fotoelétrico, corpo negro, piscina, robótica, educação">
+  <meta name="description" content="Projeto Integrador CEP - Placas fotovoltaicas: como transformar radiação solar em energia elétrica para aquecer a piscina da escola.">
+  <meta name="keywords" content="energia solar, efeito fotoelétrico, fotovoltaico, piscina, robótica, educação">
   <meta name="author" content="Natalia, Nicoli, Melissa, Rafaela">
-  <title>☀️🌊 Aquecimento Solar da Piscina — Projeto Integrador CEP</title>
+  <title>☀️⚡ Placas Fotovoltaicas — Projeto Integrador CEP</title>
 
   <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,9 +46,9 @@
 
       <nav class="nav-menu" id="navMenu" role="navigation" aria-label="Menu principal">
         <a href="#inicio" class="active">Início</a>
-        <a href="#fundamentos">Fundamentos</a>
-        <a href="#fisica-moderna">Física Moderna</a>
-        <a href="#comparativo">Térmico vs Fotovoltaico</a>
+        <a href="#celula">Célula Fotovoltaica</a>
+        <a href="#fotoeletrico">Efeito Fotoelétrico</a>
+        <a href="#eficiencia">Eficiência e Potência</a>
         <a href="#simuladores">Simuladores</a>
         <a href="#calculadora">Calculadora</a>
         <a href="#robotica">Robótica</a>
@@ -63,121 +63,116 @@
     <!-- HERO -->
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="hero-content">
-        <h1 id="hero-title">É possível aquecer a piscina da escola com energia solar?</h1>
-        <p>Descubra como a Física Moderna, o efeito fotoelétrico e a robótica podem transformar a luz do sol em calor e eletricidade para a nossa piscina.</p>
+        <h1 id="hero-title">Placas fotovoltaicas: como transformar a radiação solar em energia elétrica?</h1>
+        <p>Descubra como a Física Moderna — o efeito fotoelétrico e a conversão de energia em semicondutores — pode gerar eletricidade para aquecer a piscina da escola.</p>
         <div class="hero-buttons">
           <a href="#simuladores" class="btn btn-primary">🧪 Ver Simuladores</a>
-          <a href="#fundamentos" class="btn btn-secondary">📚 Aprender Física</a>
+          <a href="#celula" class="btn btn-secondary">📚 Aprender Física</a>
         </div>
       </div>
     </section>
 
-    <!-- FUNDAMENTOS -->
-    <section id="fundamentos" class="fade-in" aria-labelledby="fund-title">
+    <!-- CÉLULA FOTOVOLTAICA -->
+    <section id="celula" class="fade-in" aria-labelledby="celula-title">
       <div class="section-title">
-        <h2 id="fund-title">🌞 Fundamentos da Energia Solar</h2>
-        <p>Entenda como o Sol aquece a Terra e como podemos aproveitar essa energia.</p>
+        <h2 id="celula-title">🔬 A Célula Fotovoltaica</h2>
+        <p>Como é a estrutura de uma célula fotovoltaica e quais materiais são utilizados?</p>
       </div>
 
       <div class="cards-grid">
         <article class="card">
-          <div class="card-icon" aria-hidden="true">🌊</div>
-          <h3>Ondas Eletromagnéticas</h3>
-          <p>A luz solar é composta por ondas eletromagnéticas que viajam pelo espaço. O espectro inclui ultravioleta, visível e infravermelho — cada um com um papel no aquecimento.</p>
+          <div class="card-icon" aria-hidden="true">💎</div>
+          <h3>Silício — o material principal</h3>
+          <p>A maioria das células fotovoltaicas é feita de <strong>silício (Si)</strong>, um semicondutor abundante na areia. Ele possui 4 elétrons na camada de valência, ideal para formar ligações covalentes estáveis.</p>
         </article>
 
         <article class="card">
-          <div class="card-icon" aria-hidden="true">🔥</div>
-          <h3>Radiação do Corpo Negro</h3>
-          <p>Todo corpo emite radiação conforme sua temperatura. O Sol (≈5800K) emite pico no visível. O coletor solar se comporta como corpo negro, absorvendo quase toda a radiação.</p>
+          <div class="card-icon" aria-hidden="true">⚛️</div>
+          <h3>Junção P-N</h3>
+          <p>A célula possui duas camadas: a <strong>camada P</strong> (com "lacunas" — falta de elétrons, dopada com boro) e a <strong>camada N</strong> (com excesso de elétrons, dopada com fósforo). Na junção forma-se um campo elétrico interno.</p>
         </article>
 
         <article class="card">
           <div class="card-icon" aria-hidden="true">⚡</div>
-          <h3>Efeito Fotoelétrico</h3>
-          <p>Fótons com energia suficiente (E = h·f) arrancam elétrons de um material. É esse fenômeno que explica o funcionamento das células fotovoltaicas!</p>
+          <h3>Contatos metálicos</h3>
+          <p>Finas grades metálicas na superfície superior e uma placa na inferior coletam os elétrons liberados, conduzindo-os para o circuito externo — gerando <strong>corrente contínua (CC)</strong>.</p>
         </article>
 
         <article class="card">
-          <div class="card-icon" aria-hidden="true">🏊</div>
-          <h3>Perda de Calor Noturna</h3>
-          <p>A piscina emite radiação infravermelha à noite, perdendo calor. Por isso a capa térmica é essencial — ela reflete a radiação de volta para a água.</p>
+          <div class="card-icon" aria-hidden="true">🛡️</div>
+          <h3>Camada antirreflexo</h3>
+          <p>Uma fina camada de <strong>nitreto de silício</strong> reduz a reflexão da luz, garantindo que mais fótons atinjam o silício e aumentem a eficiência da célula.</p>
         </article>
       </div>
     </section>
 
-    <!-- FÍSICA MODERNA -->
-    <section id="fisica-moderna" class="fade-in" aria-labelledby="fm-title">
+    <!-- EFEITO FOTOELÉTRICO -->
+    <section id="fotoeletrico" class="fade-in" aria-labelledby="fm-title">
       <div class="section-title">
-        <h2 id="fm-title">⚛️ Física Moderna em Ação</h2>
-        <p>Como Einstein e Planck explicam o funcionamento das placas solares.</p>
+        <h2 id="fm-title">⚛️ Efeito Fotoelétrico e Geração de Corrente</h2>
+        <p>Como a energia dos fótons pode gerar corrente elétrica em um semicondutor?</p>
       </div>
 
       <div class="fisica-grid">
         <article class="fisica-card">
-          <h3>🔬 A Célula Fotovoltaica</h3>
-          <p>Feita de <strong>silício</strong> (semicondutor), possui uma junção P-N. Quando fótons atingem o material, arrancam elétrons, gerando corrente elétrica.</p>
+          <h3>💡 O que é o efeito fotoelétrico?</h3>
+          <p>Descoberto por Hertz (1887) e explicado por <strong>Einstein (1905)</strong> — que ganhou o Nobel por isso. Quando um <strong>fóton</strong> atinge um material com energia suficiente, ele arranca um elétron, transformando energia luminosa em energia cinética.</p>
           <div class="formula">E<sub>fóton</sub> = h · f</div>
           <p><strong>h</strong> = 6,626 × 10⁻³⁴ J·s (constante de Planck)<br>
           <strong>f</strong> = frequência da luz</p>
         </article>
 
         <article class="fisica-card">
-          <h3>💡 Efeito Fotoelétrico</h3>
-          <p>Descoberto por Hertz e explicado por Einstein (Nobel 1921). Só funciona se a energia do fóton for maior que a <strong>função trabalho</strong> do material.</p>
-          <div class="formula">E<sub>cinética</sub> = h·f − φ</div>
-          <p><strong>φ</strong> = função trabalho do silício (≈ 4,6 eV)</p>
+          <h3>⚡ Função trabalho e energia cinética</h3>
+          <p>Cada material tem uma <strong>função trabalho (φ)</strong> — energia mínima para liberar um elétron. Se o fóton tiver energia maior que φ, o elétron é ejetado com energia cinética:</p>
+          <div class="formula">E<sub>cin</sub> = h·f − φ</div>
+          <p>No silício, φ ≈ 1,1 eV (band gap). Fótons com energia menor que isso <strong>não geram corrente</strong>, mesmo que a luz seja muito intensa!</p>
         </article>
 
         <article class="fisica-card">
-          <h3>🌡️ Lei de Planck (Corpo Negro)</h3>
-          <p>Descreve a distribuição espectral da radiação emitida por um corpo negro. Quanto maior a temperatura, menor o comprimento de onda de pico.</p>
-          <div class="formula">λ<sub>máx</sub> · T = 2,898 × 10⁻³ m·K</div>
-          <p>Lei do deslocamento de Wien</p>
+          <h3>🔁 Do elétron à corrente elétrica</h3>
+          <p>Na junção P-N, o campo elétrico interno empurra os elétrons livres para a camada N e as lacunas para a camada P. Conectando um circuito externo, os elétrons fluem — gerando <strong>corrente elétrica utilizável</strong>.</p>
+          <div class="formula">P = V · I</div>
+          <p>Potência = Tensão × Corrente</p>
         </article>
 
         <article class="fisica-card">
-          <h3>🔋 Conversão de Energia</h3>
-          <p>A eficiência típica de uma placa fotovoltaica é de <strong>15% a 22%</strong>. A energia elétrica gerada pode alimentar bombas de calor para aquecer a piscina.</p>
-          <div class="formula">η = P<sub>elétrica</sub> / P<sub>solar</sub></div>
-          <p>Onde η é a eficiência do sistema.</p>
+          <h3>🌞 Por que a produção varia?</h3>
+          <p><strong>Ao longo do dia:</strong> o ângulo de incidência solar muda, alterando a intensidade da radiação que atinge a placa.<br><br>
+          <strong>Dias nublados:</strong> as nuvens espalham e absorvem parte da radiação, reduzindo o número de fótons que chegam à célula — menos elétrons ejetados = menos corrente.</p>
         </article>
       </div>
     </section>
 
-    <!-- COMPARATIVO -->
-    <section id="comparativo" class="fade-in" aria-labelledby="comp-title">
+    <!-- EFICIÊNCIA E POTÊNCIA -->
+    <section id="eficiencia" class="fade-in" aria-labelledby="ef-title">
       <div class="section-title">
-        <h2 id="comp-title">⚖️ Térmico vs. Fotovoltaico</h2>
-        <p>Entenda as diferenças entre os dois sistemas de aproveitamento da energia solar.</p>
+        <h2 id="ef-title">📊 Intensidade, Potência e Eficiência</h2>
+        <p>Qual é a relação entre intensidade da radiação, potência gerada e eficiência?</p>
       </div>
 
       <div class="comparativo">
         <article class="coluna-comparativo termico">
-          <h3>🔥 Aquecimento Térmico</h3>
-          <p><strong>Como funciona:</strong> Coletores absorvem radiação visível/IV e aquecem água diretamente.</p>
+          <h3>☀️ Intensidade da Radiação</h3>
+          <p><strong>Irradiância solar</strong> é a potência da luz por área (W/m²). No Brasil, a média é de <strong>5 kWh/m²/dia</strong>.</p>
           <ul>
-            <li>Alta eficiência (até 80%)</li>
-            <li>Aquece água diretamente</li>
-            <li>Mais barato</li>
-            <li>Ideal para piscinas</li>
-            <li>Funciona mesmo em dias nublados</li>
-            <li>Não gera eletricidade</li>
-            <li>Requer espaço no telhado</li>
+            <li>Mais fótons = mais elétrons ejetados</li>
+            <li>Corrente é proporcional à intensidade</li>
+            <li>Ângulo de incidência importa</li>
+            <li>Nuvens reduzem a irradiância</li>
+            <li>Pico solar: ~1000 W/m²</li>
           </ul>
         </article>
 
         <article class="coluna-comparativo fotovoltaico">
-          <h3>⚡ Fotovoltaico</h3>
-          <p><strong>Como funciona:</strong> Placas convertem luz em eletricidade via efeito fotoelétrico.</p>
+          <h3>⚡ Potência e Eficiência</h3>
+          <p>A <strong>eficiência (η)</strong> é a razão entre potência elétrica gerada e potência solar recebida.</p>
           <ul>
-            <li>Eficiência de 15-22%</li>
-            <li>Gera eletricidade versátil</li>
-            <li>Alimenta bombas de calor</li>
-            <li>Pode vender energia à rede</li>
-            <li>Vida útil de 25+ anos</li>
-            <li>Mais caro inicialmente</li>
-            <li>Produz menos em dias nublados</li>
+            <li>Placas comerciais: 15% a 22%</li>
+            <li>η = P<sub>elétrica</sub> / P<sub>solar</sub></li>
+            <li>Perdas: reflexão, calor, resistência</li>
+            <li>Temperatura alta <strong>reduz</strong> eficiência</li>
+            <li>Tecnologias: monocristalino, policristalino</li>
           </ul>
         </article>
       </div>
@@ -211,7 +206,7 @@
           <div class="controle-grupo">
             <label for="material">Material</label>
             <select id="material">
-              <option value="4.6">Silício (φ = 4,6 eV)</option>
+              <option value="1.1">Silício (φ = 1,1 eV)</option>
               <option value="2.3">Sódio (φ = 2,3 eV)</option>
               <option value="4.7">Cobre (φ = 4,7 eV)</option>
             </select>
@@ -222,22 +217,36 @@
         </div>
       </div>
 
-      <!-- Simulador 2: Corpo Negro -->
+      <!-- Simulador 2: Produção Fotovoltaica ao longo do dia -->
       <div class="simulador-container">
         <div class="simulador-header">
-          <h3>🌡️ Simulador do Corpo Negro</h3>
-          <span class="valor-display" id="statusCorpoNegro">Aguardando...</span>
+          <h3>🌤️ Simulador de Produção Fotovoltaica</h3>
+          <span class="valor-display" id="statusProducao">Aguardando...</span>
         </div>
-        <canvas id="canvasCorpoNegro" class="simulador-canvas" aria-label="Curva de radiação do corpo negro"></canvas>
+        <canvas id="canvasProducao" class="simulador-canvas" aria-label="Gráfico de produção fotovoltaica ao longo do dia"></canvas>
         <div class="simulador-controles">
           <div class="controle-grupo">
-            <label for="temperatura">Temperatura (K)</label>
-            <input type="range" id="temperatura" min="2000" max="10000" step="100" value="5800">
-            <span class="valor-display" id="tempValor">5800 K (Sol)</span>
+            <label for="potenciaPlaca">Potência da placa (W)</label>
+            <input type="range" id="potenciaPlaca" min="100" max="600" step="50" value="350">
+            <span class="valor-display" id="potValor">350 W</span>
+          </div>
+          <div class="controle-grupo">
+            <label for="nublado">Condição do céu</label>
+            <select id="nublado">
+              <option value="1.0">☀️ Céu limpo (100%)</option>
+              <option value="0.7">⛅ Parcialmente nublado (70%)</option>
+              <option value="0.4">☁️ Nublado (40%)</option>
+              <option value="0.15">🌧️ Chuva (15%)</option>
+            </select>
+          </div>
+          <div class="controle-grupo">
+            <label for="hora">Hora do dia</label>
+            <input type="range" id="hora" min="6" max="18" step="0.5" value="12">
+            <span class="valor-display" id="horaValor">12:00</span>
           </div>
         </div>
-        <div class="simulador-resultado" id="resultadoCorpoNegro">
-          Ajuste a temperatura para ver a curva de Planck!
+        <div class="simulador-resultado" id="resultadoProducao">
+          Ajuste os controles para ver a produção estimada!
         </div>
       </div>
     </section>
@@ -245,12 +254,12 @@
     <!-- CALCULADORA -->
     <section id="calculadora" class="fade-in" aria-labelledby="calc-title">
       <div class="section-title">
-        <h2 id="calc-title">🧮 Calculadora de Energia Solar</h2>
-        <p>Dimensione o sistema para aquecer a piscina da escola.</p>
+        <h2 id="calc-title">🧮 Calculadora Fotovoltaica para a Piscina</h2>
+        <p>Como a eletricidade produzida poderia ser utilizada para aquecer a piscina? Dimensione o sistema!</p>
       </div>
 
       <div class="calculadora">
-        <form id="formCalculadora" aria-label="Calculadora de dimensionamento solar">
+        <form id="formCalculadora" aria-label="Calculadora de dimensionamento fotovoltaico">
           <div class="form-grupo">
             <label for="volume">Volume da piscina (litros)</label>
             <input type="number" id="volume" value="50000" min="1000" step="1000" required>
@@ -268,8 +277,8 @@
             <input type="number" id="irradiacao" value="5" min="2" max="8" step="0.1" required>
           </div>
           <div class="form-grupo">
-            <label for="eficiencia">Eficiência do sistema (%)</label>
-            <input type="number" id="eficiencia" value="70" min="10" max="95" step="1" required>
+            <label for="potenciaPlacaCalc">Potência de cada placa (W)</label>
+            <input type="number" id="potenciaPlacaCalc" value="350" min="100" max="700" step="50" required>
           </div>
           <button type="submit" class="btn btn-primary">🔍 Calcular</button>
         </form>
@@ -277,19 +286,27 @@
         <div class="resultado-calculadora" id="resultadoCalculadora" hidden>
           <h4>📊 Resultado do Dimensionamento</h4>
           <div class="resultado-item">
-            <span>Energia necessária:</span>
+            <span>Energia necessária para aquecer:</span>
             <span id="energiaNecessaria">—</span>
           </div>
           <div class="resultado-item">
-            <span>Área de coletores:</span>
-            <span id="areaColetores">—</span>
+            <span>Energia diária com perdas (20%):</span>
+            <span id="energiaDiaria">—</span>
           </div>
           <div class="resultado-item">
-            <span>Placas fotovoltaicas (350W):</span>
+            <span>Produção por placa/dia (5h de sol):</span>
+            <span id="producaoPlaca">—</span>
+          </div>
+          <div class="resultado-item">
+            <span>Número de placas necessárias:</span>
             <span id="placasFV">—</span>
           </div>
           <div class="resultado-item">
-            <span>Economia mensal estimada:</span>
+            <span>Área estimada do sistema:</span>
+            <span id="areaTotal">—</span>
+          </div>
+          <div class="resultado-item">
+            <span>Economia mensal estimada (R$ 0,80/kWh):</span>
             <span id="economia">—</span>
           </div>
         </div>
@@ -299,33 +316,33 @@
     <!-- ROBÓTICA -->
     <section id="robotica" class="fade-in" aria-labelledby="rob-title">
       <div class="section-title">
-        <h2 id="rob-title">🤖 Robótica e Automação</h2>
-        <p>Sensores inteligentes para monitorar e automatizar a piscina.</p>
+        <h2 id="rob-title">🤖 Robótica e Automação do Sistema</h2>
+        <p>Sensores inteligentes para otimizar a geração e o uso da energia na piscina.</p>
       </div>
 
       <div class="cards-grid">
         <article class="card">
-          <div class="card-icon" aria-hidden="true">🌡️</div>
-          <h3>Sensor de Temperatura</h3>
-          <p><strong>DS18B20</strong> monitora a temperatura da água em tempo real. Aciona a bomba de calor quando necessário.</p>
+          <div class="card-icon" aria-hidden="true">💡</div>
+          <h3>Sensor de Luminosidade (LDR / BH1750)</h3>
+          <p>Mede a intensidade da radiação solar em tempo real. O microcontrolador pode <strong>inclinar as placas</strong> para seguir o sol (sistema de rastreamento), maximizando a produção.</p>
         </article>
 
         <article class="card">
-          <div class="card-icon" aria-hidden="true">💡</div>
-          <h3>Sensor de Luminosidade</h3>
-          <p><strong>LDR / BH1750</strong> mede a intensidade solar. Otimiza o uso dos coletores e painéis.</p>
+          <div class="card-icon" aria-hidden="true">🌡️</div>
+          <h3>Sensor de Temperatura (DS18B20)</h3>
+          <p>Monitora a temperatura da água da piscina. Quando atinge o valor desejado, o sistema <strong>desliga a bomba de calor</strong> automaticamente, economizando energia.</p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon" aria-hidden="true">⚡</div>
+          <h3>Sensor de Corrente (ACS712)</h3>
+          <p>Mede a corrente gerada pelas placas. Permite calcular a <strong>potência instantânea</strong> e registrar a produção diária em um display ou app.</p>
         </article>
 
         <article class="card">
           <div class="card-icon" aria-hidden="true">💧</div>
-          <h3>Sensor de Nível</h3>
-          <p><strong>Ultrassônico HC-SR04</strong> controla o nível da água, acionando a bomba de reposição.</p>
-        </article>
-
-        <article class="card">
-          <div class="card-icon" aria-hidden="true">🧪</div>
-          <h3>Sensor de pH</h3>
-          <p>Monitora a qualidade da água e aciona dosadores automáticos de cloro.</p>
+          <h3>Sensor de Nível (HC-SR04)</h3>
+          <p>Controla o nível da água da piscina. Aciona a bomba de reposição quando necessário, evitando desperdício de energia e água.</p>
         </article>
       </div>
     </section>
@@ -367,14 +384,15 @@
   <footer role="contentinfo">
     <div class="footer-content">
       <div class="footer-col">
-        <h4>☀️🌊 Solar Piscina CEP</h4>
-        <p>Projeto Integrador do 3º Trimestre — integrando Programação, Tecnociência e Robótica.</p>
+        <h4>☀️⚡ Solar Piscina CEP</h4>
+        <p>Projeto Integrador do 3º Trimestre — integrando Programação, Tecnociência e Robótica com foco em energia fotovoltaica.</p>
       </div>
       <div class="footer-col">
         <h4>🔗 Navegação</h4>
         <ul>
-          <li><a href="#fundamentos">Fundamentos</a></li>
-          <li><a href="#fisica-moderna">Física Moderna</a></li>
+          <li><a href="#celula">Célula Fotovoltaica</a></li>
+          <li><a href="#fotoeletrico">Efeito Fotoelétrico</a></li>
+          <li><a href="#eficiencia">Eficiência e Potência</a></li>
           <li><a href="#simuladores">Simuladores</a></li>
           <li><a href="#calculadora">Calculadora</a></li>
         </ul>
@@ -391,8 +409,8 @@
         <h4>📚 Referências</h4>
         <ul>
           <li>Einstein, A. (1905). Efeito Fotoelétrico</li>
-          <li>Planck, M. (1900). Radiação do Corpo Negro</li>
-          <li>INMETRO — Energia Solar</li>
+          <li>CRESESB — Centro de Referência em Energia Solar</li>
+          <li>INMETRO — Eficiência de Módulos FV</li>
         </ul>
       </div>
     </div>
